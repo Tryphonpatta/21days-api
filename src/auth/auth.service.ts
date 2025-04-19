@@ -20,6 +20,8 @@ export class AuthService {
       throw new HttpException('Invalid credentials', 401);
     }
     // Generate JWT token
+    console.log('JwtService sign call:', this.jwtService);
+
     const token = this.jwtService.sign({
       username: user.username,
       userId: user.id,

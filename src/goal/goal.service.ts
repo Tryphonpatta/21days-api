@@ -1,0 +1,59 @@
+import { Injectable } from '@nestjs/common';
+import { CreateGoalDto } from './dto/create-goal.dto';
+import { UpdateGoalDto } from './dto/update-goal.dto';
+import { PrismaService } from 'src/prisma.service';
+
+@Injectable()
+export class GoalService {
+  constructor(private readonly prisma: PrismaService) {}
+  async create(createGoalDto: CreateGoalDto, userId: string) {
+    const goal = await this.prisma.goal.create({
+      data: {
+        name: createGoalDto.name,
+        note: createGoalDto.note ? createGoalDto.note : '',
+        userId: userId,
+        color: createGoalDto.color ? createGoalDto.color : '#000000',
+        ...(createGoalDto.tag && { tagId: createGoalDto.tag }),
+      },
+    });
+    return goal;
+  }
+
+  async findAll(userId: string, tag?: string) {
+    const goals = await this.prisma.goal.findMany({
+      where: {
+        userId: userId,
+        ...(tag && { tagId: tag }),
+      },
+    });
+    return goals;
+  }
+
+  async findOne(id: string) {
+    const goal = await this.prisma.goal.findUnique({
+      where: {
+        id: id,
+      },
+    });
+    return goal;
+  }
+
+  async update(id: string, updateGoalDto: UpdateGoalDto) {
+    const goal = await this.prisma.goal.update({
+      where: {
+        id: id,
+      },
+      data: {
+        name: updateGoalDto.name,
+        note: updateGoalDto.note,
+        color: updateGoalDto.color,
+        ...(updateGoalDto.tag && { tagId: updateGoalDto.tag }),
+      },
+    });
+    return goal;
+  }
+
+  remove(id: number) {
+    return `This action removes a #${id} goal`;
+  }
+}

@@ -1,3 +1,17 @@
+model Goal {
+  id        String   @id @default(cuid())
+  name      String
+  note      String
+  streak    Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+  color     String
+  tagId     String?
+  tag       Tag?     @relation(fields: [tagId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+}
+
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
@@ -15,6 +29,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Tag {
+  id     String @id @default(cuid())
+  name   String
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+  Goal   Goal[]
+}
+
 model User {
   id        String   @id @default(uuid())
   username  String   @unique
@@ -22,4 +44,6 @@ model User {
   email     String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  Goal      Goal[]
+  Tag       Tag[]
 }
