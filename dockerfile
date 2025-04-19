@@ -7,6 +7,7 @@ RUN npm install -g pnpm
 # Set working directory inside container
 WORKDIR /usr/src/app
 
+RUN pnpm add -g @nestjs/cli
 
 COPY package.json pnpm-lock.yaml ./
 # Install only production dependencies
