@@ -53,7 +53,13 @@ export class GoalService {
     return goal;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} goal`;
+  async remove(id: string, userId: string) {
+    const goal = await this.prisma.goal.delete({
+      where: {
+        id: id,
+        userId: userId,
+      },
+    });
+    return goal;
   }
 }
