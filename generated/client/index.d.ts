@@ -1135,10 +1135,12 @@ export namespace Prisma {
 
   export type GoalAvgAggregateOutputType = {
     streak: number | null
+    bestStreak: number | null
   }
 
   export type GoalSumAggregateOutputType = {
     streak: number | null
+    bestStreak: number | null
   }
 
   export type GoalMinAggregateOutputType = {
@@ -1148,6 +1150,7 @@ export namespace Prisma {
     streak: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    bestStreak: number | null
     userId: string | null
     color: string | null
     tagId: string | null
@@ -1160,6 +1163,7 @@ export namespace Prisma {
     streak: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    bestStreak: number | null
     userId: string | null
     color: string | null
     tagId: string | null
@@ -1172,6 +1176,7 @@ export namespace Prisma {
     streak: number
     createdAt: number
     updatedAt: number
+    bestStreak: number
     userId: number
     color: number
     tagId: number
@@ -1181,10 +1186,12 @@ export namespace Prisma {
 
   export type GoalAvgAggregateInputType = {
     streak?: true
+    bestStreak?: true
   }
 
   export type GoalSumAggregateInputType = {
     streak?: true
+    bestStreak?: true
   }
 
   export type GoalMinAggregateInputType = {
@@ -1194,6 +1201,7 @@ export namespace Prisma {
     streak?: true
     createdAt?: true
     updatedAt?: true
+    bestStreak?: true
     userId?: true
     color?: true
     tagId?: true
@@ -1206,6 +1214,7 @@ export namespace Prisma {
     streak?: true
     createdAt?: true
     updatedAt?: true
+    bestStreak?: true
     userId?: true
     color?: true
     tagId?: true
@@ -1218,6 +1227,7 @@ export namespace Prisma {
     streak?: true
     createdAt?: true
     updatedAt?: true
+    bestStreak?: true
     userId?: true
     color?: true
     tagId?: true
@@ -1317,6 +1327,7 @@ export namespace Prisma {
     streak: number
     createdAt: Date
     updatedAt: Date
+    bestStreak: number
     userId: string
     color: string
     tagId: string | null
@@ -1348,6 +1359,7 @@ export namespace Prisma {
     streak?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    bestStreak?: boolean
     userId?: boolean
     color?: boolean
     tagId?: boolean
@@ -1362,6 +1374,7 @@ export namespace Prisma {
     streak?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    bestStreak?: boolean
     userId?: boolean
     color?: boolean
     tagId?: boolean
@@ -1376,6 +1389,7 @@ export namespace Prisma {
     streak?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    bestStreak?: boolean
     userId?: boolean
     color?: boolean
     tagId?: boolean
@@ -1390,12 +1404,13 @@ export namespace Prisma {
     streak?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    bestStreak?: boolean
     userId?: boolean
     color?: boolean
     tagId?: boolean
   }
 
-  export type GoalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "note" | "streak" | "createdAt" | "updatedAt" | "userId" | "color" | "tagId", ExtArgs["result"]["goal"]>
+  export type GoalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "note" | "streak" | "createdAt" | "updatedAt" | "bestStreak" | "userId" | "color" | "tagId", ExtArgs["result"]["goal"]>
   export type GoalInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tag?: boolean | Goal$tagArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -1422,6 +1437,7 @@ export namespace Prisma {
       streak: number
       createdAt: Date
       updatedAt: Date
+      bestStreak: number
       userId: string
       color: string
       tagId: string | null
@@ -1856,6 +1872,7 @@ export namespace Prisma {
     readonly streak: FieldRef<"Goal", 'Int'>
     readonly createdAt: FieldRef<"Goal", 'DateTime'>
     readonly updatedAt: FieldRef<"Goal", 'DateTime'>
+    readonly bestStreak: FieldRef<"Goal", 'Int'>
     readonly userId: FieldRef<"Goal", 'String'>
     readonly color: FieldRef<"Goal", 'String'>
     readonly tagId: FieldRef<"Goal", 'String'>
@@ -4486,6 +4503,7 @@ export namespace Prisma {
     streak: 'streak',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
+    bestStreak: 'bestStreak',
     userId: 'userId',
     color: 'color',
     tagId: 'tagId'
@@ -4613,6 +4631,7 @@ export namespace Prisma {
     streak?: IntFilter<"Goal"> | number
     createdAt?: DateTimeFilter<"Goal"> | Date | string
     updatedAt?: DateTimeFilter<"Goal"> | Date | string
+    bestStreak?: IntFilter<"Goal"> | number
     userId?: StringFilter<"Goal"> | string
     color?: StringFilter<"Goal"> | string
     tagId?: StringNullableFilter<"Goal"> | string | null
@@ -4627,6 +4646,7 @@ export namespace Prisma {
     streak?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    bestStreak?: SortOrder
     userId?: SortOrder
     color?: SortOrder
     tagId?: SortOrderInput | SortOrder
@@ -4644,6 +4664,7 @@ export namespace Prisma {
     streak?: IntFilter<"Goal"> | number
     createdAt?: DateTimeFilter<"Goal"> | Date | string
     updatedAt?: DateTimeFilter<"Goal"> | Date | string
+    bestStreak?: IntFilter<"Goal"> | number
     userId?: StringFilter<"Goal"> | string
     color?: StringFilter<"Goal"> | string
     tagId?: StringNullableFilter<"Goal"> | string | null
@@ -4658,6 +4679,7 @@ export namespace Prisma {
     streak?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    bestStreak?: SortOrder
     userId?: SortOrder
     color?: SortOrder
     tagId?: SortOrderInput | SortOrder
@@ -4678,6 +4700,7 @@ export namespace Prisma {
     streak?: IntWithAggregatesFilter<"Goal"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Goal"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Goal"> | Date | string
+    bestStreak?: IntWithAggregatesFilter<"Goal"> | number
     userId?: StringWithAggregatesFilter<"Goal"> | string
     color?: StringWithAggregatesFilter<"Goal"> | string
     tagId?: StringNullableWithAggregatesFilter<"Goal"> | string | null
@@ -4801,6 +4824,7 @@ export namespace Prisma {
     streak?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    bestStreak?: number
     color: string
     tag?: TagCreateNestedOneWithoutGoalInput
     user: UserCreateNestedOneWithoutGoalInput
@@ -4813,6 +4837,7 @@ export namespace Prisma {
     streak?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    bestStreak?: number
     userId: string
     color: string
     tagId?: string | null
@@ -4825,6 +4850,7 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bestStreak?: IntFieldUpdateOperationsInput | number
     color?: StringFieldUpdateOperationsInput | string
     tag?: TagUpdateOneWithoutGoalNestedInput
     user?: UserUpdateOneRequiredWithoutGoalNestedInput
@@ -4837,6 +4863,7 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bestStreak?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
     tagId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -4849,6 +4876,7 @@ export namespace Prisma {
     streak?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    bestStreak?: number
     userId: string
     color: string
     tagId?: string | null
@@ -4861,6 +4889,7 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bestStreak?: IntFieldUpdateOperationsInput | number
     color?: StringFieldUpdateOperationsInput | string
   }
 
@@ -4871,6 +4900,7 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bestStreak?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
     tagId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -5066,6 +5096,7 @@ export namespace Prisma {
     streak?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    bestStreak?: SortOrder
     userId?: SortOrder
     color?: SortOrder
     tagId?: SortOrder
@@ -5073,6 +5104,7 @@ export namespace Prisma {
 
   export type GoalAvgOrderByAggregateInput = {
     streak?: SortOrder
+    bestStreak?: SortOrder
   }
 
   export type GoalMaxOrderByAggregateInput = {
@@ -5082,6 +5114,7 @@ export namespace Prisma {
     streak?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    bestStreak?: SortOrder
     userId?: SortOrder
     color?: SortOrder
     tagId?: SortOrder
@@ -5094,6 +5127,7 @@ export namespace Prisma {
     streak?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    bestStreak?: SortOrder
     userId?: SortOrder
     color?: SortOrder
     tagId?: SortOrder
@@ -5101,6 +5135,7 @@ export namespace Prisma {
 
   export type GoalSumOrderByAggregateInput = {
     streak?: SortOrder
+    bestStreak?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -5688,6 +5723,7 @@ export namespace Prisma {
     streak?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    bestStreak?: number
     color: string
     user: UserCreateNestedOneWithoutGoalInput
   }
@@ -5699,6 +5735,7 @@ export namespace Prisma {
     streak?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    bestStreak?: number
     userId: string
     color: string
   }
@@ -5770,6 +5807,7 @@ export namespace Prisma {
     streak?: IntFilter<"Goal"> | number
     createdAt?: DateTimeFilter<"Goal"> | Date | string
     updatedAt?: DateTimeFilter<"Goal"> | Date | string
+    bestStreak?: IntFilter<"Goal"> | number
     userId?: StringFilter<"Goal"> | string
     color?: StringFilter<"Goal"> | string
     tagId?: StringNullableFilter<"Goal"> | string | null
@@ -5782,6 +5820,7 @@ export namespace Prisma {
     streak?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    bestStreak?: number
     color: string
     tag?: TagCreateNestedOneWithoutGoalInput
   }
@@ -5793,6 +5832,7 @@ export namespace Prisma {
     streak?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    bestStreak?: number
     color: string
     tagId?: string | null
   }
@@ -5877,6 +5917,7 @@ export namespace Prisma {
     streak?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    bestStreak?: number
     userId: string
     color: string
   }
@@ -5888,6 +5929,7 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bestStreak?: IntFieldUpdateOperationsInput | number
     color?: StringFieldUpdateOperationsInput | string
     user?: UserUpdateOneRequiredWithoutGoalNestedInput
   }
@@ -5899,6 +5941,7 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bestStreak?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
   }
@@ -5910,6 +5953,7 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bestStreak?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
   }
@@ -5921,6 +5965,7 @@ export namespace Prisma {
     streak?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    bestStreak?: number
     color: string
     tagId?: string | null
   }
@@ -5937,6 +5982,7 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bestStreak?: IntFieldUpdateOperationsInput | number
     color?: StringFieldUpdateOperationsInput | string
     tag?: TagUpdateOneWithoutGoalNestedInput
   }
@@ -5948,6 +5994,7 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bestStreak?: IntFieldUpdateOperationsInput | number
     color?: StringFieldUpdateOperationsInput | string
     tagId?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -5959,6 +6006,7 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bestStreak?: IntFieldUpdateOperationsInput | number
     color?: StringFieldUpdateOperationsInput | string
     tagId?: NullableStringFieldUpdateOperationsInput | string | null
   }

@@ -124,6 +124,7 @@ exports.Prisma.GoalScalarFieldEnum = {
   streak: 'streak',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
+  bestStreak: 'bestStreak',
   userId: 'userId',
   color: 'color',
   tagId: 'tagId'
