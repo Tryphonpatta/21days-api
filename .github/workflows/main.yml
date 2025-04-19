@@ -31,7 +31,8 @@ jobs:
       # Step 4: Push Docker image to Docker Hub (Optional)
       - name: Push Docker image to Docker Hub
         run: |
-          docker push 21days-api:latest
+          docker tag 21days-api patthadon/21days-api
+          docker push patthadon/21days-api:latest
 
       # Step 5: Execute SSH commands remotely on EC2
       - name: Deploy to EC2 via SSH
