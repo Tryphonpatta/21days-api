@@ -43,6 +43,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             sudo docker pull patthadon/21days-api
-            sudo docker stop 21days-api
-            sudo docker rm 21days-api
+            sudo docker stop 21days-api || true
+            sudo docker rm 21days-api || true
+            sudo docker run -d --name 21days-api -p 3000:3000 patthadon/21days-api
             sudo docker network connect nginx-proxy_default 21days-api
