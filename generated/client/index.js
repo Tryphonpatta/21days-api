@@ -161,6 +161,10 @@ const config = {
         "fromEnvVar": null,
         "value": "darwin-arm64",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "linux-musl-openssl-3.0.x"
       }
     ],
     "previewFeatures": [
@@ -180,16 +184,17 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://postgres:password@54.255.164.110:5432/21Days"
+        "value": null
       }
     }
   },
-  "inlineSchema": "model Goal {\n  id         String   @id @default(cuid())\n  name       String\n  note       String\n  streak     Int      @default(0)\n  createdAt  DateTime @default(now())\n  updatedAt  DateTime @updatedAt\n  bestStreak Int      @default(0)\n  userId     String\n  color      String\n  tagId      String?\n  tag        Tag?     @relation(fields: [tagId], references: [id])\n  user       User     @relation(fields: [userId], references: [id])\n}\n\n// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider        = \"prisma-client-js\"\n  output          = \"../../generated/client\"\n  previewFeatures = [\"prismaSchemaFolder\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Tag {\n  id     String @id @default(cuid())\n  name   String\n  userId String\n  user   User   @relation(fields: [userId], references: [id])\n  Goal   Goal[]\n}\n\nmodel User {\n  id        String   @id @default(uuid())\n  username  String   @unique\n  password  String\n  email     String   @unique\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n  Goal      Goal[]\n  Tag       Tag[]\n}\n",
-  "inlineSchemaHash": "75f585a1fdb31da79c6207a850ff2353d9a643b80b1338ab0e1a67d8cddf57ca",
+  "inlineSchema": "model Goal {\n  id         String   @id @default(cuid())\n  name       String\n  note       String\n  streak     Int      @default(0)\n  createdAt  DateTime @default(now())\n  updatedAt  DateTime @updatedAt\n  bestStreak Int      @default(0)\n  userId     String\n  color      String\n  tagId      String?\n  tag        Tag?     @relation(fields: [tagId], references: [id])\n  user       User     @relation(fields: [userId], references: [id])\n}\n\n// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider        = \"prisma-client-js\"\n  output          = \"../../generated/client\"\n  previewFeatures = [\"prismaSchemaFolder\"]\n  binaryTargets   = [\"native\", \"linux-musl-openssl-3.0.x\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Tag {\n  id     String @id @default(cuid())\n  name   String\n  userId String\n  user   User   @relation(fields: [userId], references: [id])\n  Goal   Goal[]\n}\n\nmodel User {\n  id        String   @id @default(uuid())\n  username  String   @unique\n  password  String\n  email     String   @unique\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n  Goal      Goal[]\n  Tag       Tag[]\n}\n",
+  "inlineSchemaHash": "40f2f59743e1f83293f7af5a036a3563481be6258533001c5f480cc692df9891",
   "copyEngine": true
 }
 
@@ -230,6 +235,10 @@ Object.assign(exports, Prisma)
 // file annotations for bundling tools to include these files
 path.join(__dirname, "libquery_engine-darwin-arm64.dylib.node");
 path.join(process.cwd(), "generated/client/libquery_engine-darwin-arm64.dylib.node")
+
+// file annotations for bundling tools to include these files
+path.join(__dirname, "libquery_engine-linux-musl-openssl-3.0.x.so.node");
+path.join(process.cwd(), "generated/client/libquery_engine-linux-musl-openssl-3.0.x.so.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "generated/client/schema.prisma")
