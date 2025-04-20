@@ -1,16 +1,28 @@
 model Goal {
-  id         String   @id @default(cuid())
+  id         String    @id @default(cuid())
   name       String
   note       String
-  streak     Int      @default(0)
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  bestStreak Int      @default(0)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  bestStreak Int       @default(0)
+  streak     Int       @default(0)
   userId     String
   color      String
   tagId      String?
-  tag        Tag?     @relation(fields: [tagId], references: [id])
-  user       User     @relation(fields: [userId], references: [id])
+  tag        Tag?      @relation(fields: [tagId], references: [id])
+  user       User      @relation(fields: [userId], references: [id])
+  goalLog    goalLog[]
+}
+
+model goalLog {
+  id        Int      @id @default(autoincrement())
+  goalId    String
+  goal      Goal     @relation(fields: [goalId], references: [id])
+  streak    Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  day       DateTime @default(now())
+  status    Boolean
 }
 
 // This is your Prisma schema file,

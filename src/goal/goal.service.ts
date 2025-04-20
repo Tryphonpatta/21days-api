@@ -22,14 +22,26 @@ export class GoalService {
   async findAll(userId: string, tag?: string) {
     const goals = await this.prisma.goal.findMany({
       where: {
-        userId: userId,
+        userId,
         ...(tag && { tagId: tag }),
       },
       include: {
         tag: true,
+        goalLog: {
+          orderBy: {
+            createdAt: 'desc',
+          },
+          take: 1, // Get only the latest
+        },
       },
     });
-    return goals;
+    return goals.map((goal) => {
+      return {
+        ...goal,
+        status: goal.goalLog[0]?.status,
+        streak: goal.goalLog[0]?.streak ? goal.goalLog[0].streak : 0,
+      };
+    });
   }
 
   async findOne(id: string) {

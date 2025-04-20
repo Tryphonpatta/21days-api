@@ -19,6 +19,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type Goal = $Result.DefaultSelection<Prisma.$GoalPayload>
 /**
+ * Model goalLog
+ * 
+ */
+export type goalLog = $Result.DefaultSelection<Prisma.$goalLogPayload>
+/**
  * Model Tag
  * 
  */
@@ -163,6 +168,16 @@ export class PrismaClient<
     * ```
     */
   get goal(): Prisma.GoalDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.goalLog`: Exposes CRUD operations for the **goalLog** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more GoalLogs
+    * const goalLogs = await prisma.goalLog.findMany()
+    * ```
+    */
+  get goalLog(): Prisma.goalLogDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.tag`: Exposes CRUD operations for the **Tag** model.
@@ -624,6 +639,7 @@ export namespace Prisma {
 
   export const ModelName: {
     Goal: 'Goal',
+    goalLog: 'goalLog',
     Tag: 'Tag',
     User: 'User'
   };
@@ -644,7 +660,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "goal" | "tag" | "user"
+      modelProps: "goal" | "goalLog" | "tag" | "user"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -719,6 +735,80 @@ export namespace Prisma {
           count: {
             args: Prisma.GoalCountArgs<ExtArgs>
             result: $Utils.Optional<GoalCountAggregateOutputType> | number
+          }
+        }
+      }
+      goalLog: {
+        payload: Prisma.$goalLogPayload<ExtArgs>
+        fields: Prisma.goalLogFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.goalLogFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$goalLogPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.goalLogFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$goalLogPayload>
+          }
+          findFirst: {
+            args: Prisma.goalLogFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$goalLogPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.goalLogFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$goalLogPayload>
+          }
+          findMany: {
+            args: Prisma.goalLogFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$goalLogPayload>[]
+          }
+          create: {
+            args: Prisma.goalLogCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$goalLogPayload>
+          }
+          createMany: {
+            args: Prisma.goalLogCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.goalLogCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$goalLogPayload>[]
+          }
+          delete: {
+            args: Prisma.goalLogDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$goalLogPayload>
+          }
+          update: {
+            args: Prisma.goalLogUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$goalLogPayload>
+          }
+          deleteMany: {
+            args: Prisma.goalLogDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.goalLogUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.goalLogUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$goalLogPayload>[]
+          }
+          upsert: {
+            args: Prisma.goalLogUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$goalLogPayload>
+          }
+          aggregate: {
+            args: Prisma.GoalLogAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateGoalLog>
+          }
+          groupBy: {
+            args: Prisma.goalLogGroupByArgs<ExtArgs>
+            result: $Utils.Optional<GoalLogGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.goalLogCountArgs<ExtArgs>
+            result: $Utils.Optional<GoalLogCountAggregateOutputType> | number
           }
         }
       }
@@ -955,6 +1045,7 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     goal?: GoalOmit
+    goalLog?: goalLogOmit
     tag?: TagOmit
     user?: UserOmit
   }
@@ -1047,6 +1138,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type GoalCountOutputType
+   */
+
+  export type GoalCountOutputType = {
+    goalLog: number
+  }
+
+  export type GoalCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    goalLog?: boolean | GoalCountOutputTypeCountGoalLogArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * GoalCountOutputType without action
+   */
+  export type GoalCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GoalCountOutputType
+     */
+    select?: GoalCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * GoalCountOutputType without action
+   */
+  export type GoalCountOutputTypeCountGoalLogArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: goalLogWhereInput
+  }
+
+
+  /**
    * Count Type TagCountOutputType
    */
 
@@ -1134,23 +1256,23 @@ export namespace Prisma {
   }
 
   export type GoalAvgAggregateOutputType = {
-    streak: number | null
     bestStreak: number | null
+    streak: number | null
   }
 
   export type GoalSumAggregateOutputType = {
-    streak: number | null
     bestStreak: number | null
+    streak: number | null
   }
 
   export type GoalMinAggregateOutputType = {
     id: string | null
     name: string | null
     note: string | null
-    streak: number | null
     createdAt: Date | null
     updatedAt: Date | null
     bestStreak: number | null
+    streak: number | null
     userId: string | null
     color: string | null
     tagId: string | null
@@ -1160,10 +1282,10 @@ export namespace Prisma {
     id: string | null
     name: string | null
     note: string | null
-    streak: number | null
     createdAt: Date | null
     updatedAt: Date | null
     bestStreak: number | null
+    streak: number | null
     userId: string | null
     color: string | null
     tagId: string | null
@@ -1173,10 +1295,10 @@ export namespace Prisma {
     id: number
     name: number
     note: number
-    streak: number
     createdAt: number
     updatedAt: number
     bestStreak: number
+    streak: number
     userId: number
     color: number
     tagId: number
@@ -1185,23 +1307,23 @@ export namespace Prisma {
 
 
   export type GoalAvgAggregateInputType = {
-    streak?: true
     bestStreak?: true
+    streak?: true
   }
 
   export type GoalSumAggregateInputType = {
-    streak?: true
     bestStreak?: true
+    streak?: true
   }
 
   export type GoalMinAggregateInputType = {
     id?: true
     name?: true
     note?: true
-    streak?: true
     createdAt?: true
     updatedAt?: true
     bestStreak?: true
+    streak?: true
     userId?: true
     color?: true
     tagId?: true
@@ -1211,10 +1333,10 @@ export namespace Prisma {
     id?: true
     name?: true
     note?: true
-    streak?: true
     createdAt?: true
     updatedAt?: true
     bestStreak?: true
+    streak?: true
     userId?: true
     color?: true
     tagId?: true
@@ -1224,10 +1346,10 @@ export namespace Prisma {
     id?: true
     name?: true
     note?: true
-    streak?: true
     createdAt?: true
     updatedAt?: true
     bestStreak?: true
+    streak?: true
     userId?: true
     color?: true
     tagId?: true
@@ -1324,10 +1446,10 @@ export namespace Prisma {
     id: string
     name: string
     note: string
-    streak: number
     createdAt: Date
     updatedAt: Date
     bestStreak: number
+    streak: number
     userId: string
     color: string
     tagId: string | null
@@ -1356,25 +1478,27 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     note?: boolean
-    streak?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     bestStreak?: boolean
+    streak?: boolean
     userId?: boolean
     color?: boolean
     tagId?: boolean
     tag?: boolean | Goal$tagArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
+    goalLog?: boolean | Goal$goalLogArgs<ExtArgs>
+    _count?: boolean | GoalCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["goal"]>
 
   export type GoalSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     note?: boolean
-    streak?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     bestStreak?: boolean
+    streak?: boolean
     userId?: boolean
     color?: boolean
     tagId?: boolean
@@ -1386,10 +1510,10 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     note?: boolean
-    streak?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     bestStreak?: boolean
+    streak?: boolean
     userId?: boolean
     color?: boolean
     tagId?: boolean
@@ -1401,19 +1525,21 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     note?: boolean
-    streak?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     bestStreak?: boolean
+    streak?: boolean
     userId?: boolean
     color?: boolean
     tagId?: boolean
   }
 
-  export type GoalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "note" | "streak" | "createdAt" | "updatedAt" | "bestStreak" | "userId" | "color" | "tagId", ExtArgs["result"]["goal"]>
+  export type GoalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "note" | "createdAt" | "updatedAt" | "bestStreak" | "streak" | "userId" | "color" | "tagId", ExtArgs["result"]["goal"]>
   export type GoalInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tag?: boolean | Goal$tagArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
+    goalLog?: boolean | Goal$goalLogArgs<ExtArgs>
+    _count?: boolean | GoalCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type GoalIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tag?: boolean | Goal$tagArgs<ExtArgs>
@@ -1429,15 +1555,16 @@ export namespace Prisma {
     objects: {
       tag: Prisma.$TagPayload<ExtArgs> | null
       user: Prisma.$UserPayload<ExtArgs>
+      goalLog: Prisma.$goalLogPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
       note: string
-      streak: number
       createdAt: Date
       updatedAt: Date
       bestStreak: number
+      streak: number
       userId: string
       color: string
       tagId: string | null
@@ -1837,6 +1964,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     tag<T extends Goal$tagArgs<ExtArgs> = {}>(args?: Subset<T, Goal$tagArgs<ExtArgs>>): Prisma__TagClient<$Result.GetResult<Prisma.$TagPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    goalLog<T extends Goal$goalLogArgs<ExtArgs> = {}>(args?: Subset<T, Goal$goalLogArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$goalLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1869,10 +1997,10 @@ export namespace Prisma {
     readonly id: FieldRef<"Goal", 'String'>
     readonly name: FieldRef<"Goal", 'String'>
     readonly note: FieldRef<"Goal", 'String'>
-    readonly streak: FieldRef<"Goal", 'Int'>
     readonly createdAt: FieldRef<"Goal", 'DateTime'>
     readonly updatedAt: FieldRef<"Goal", 'DateTime'>
     readonly bestStreak: FieldRef<"Goal", 'Int'>
+    readonly streak: FieldRef<"Goal", 'Int'>
     readonly userId: FieldRef<"Goal", 'String'>
     readonly color: FieldRef<"Goal", 'String'>
     readonly tagId: FieldRef<"Goal", 'String'>
@@ -2291,6 +2419,30 @@ export namespace Prisma {
   }
 
   /**
+   * Goal.goalLog
+   */
+  export type Goal$goalLogArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the goalLog
+     */
+    select?: goalLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the goalLog
+     */
+    omit?: goalLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: goalLogInclude<ExtArgs> | null
+    where?: goalLogWhereInput
+    orderBy?: goalLogOrderByWithRelationInput | goalLogOrderByWithRelationInput[]
+    cursor?: goalLogWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GoalLogScalarFieldEnum | GoalLogScalarFieldEnum[]
+  }
+
+  /**
    * Goal without action
    */
   export type GoalDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2306,6 +2458,1128 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: GoalInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model goalLog
+   */
+
+  export type AggregateGoalLog = {
+    _count: GoalLogCountAggregateOutputType | null
+    _avg: GoalLogAvgAggregateOutputType | null
+    _sum: GoalLogSumAggregateOutputType | null
+    _min: GoalLogMinAggregateOutputType | null
+    _max: GoalLogMaxAggregateOutputType | null
+  }
+
+  export type GoalLogAvgAggregateOutputType = {
+    id: number | null
+    streak: number | null
+  }
+
+  export type GoalLogSumAggregateOutputType = {
+    id: number | null
+    streak: number | null
+  }
+
+  export type GoalLogMinAggregateOutputType = {
+    id: number | null
+    goalId: string | null
+    streak: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    day: Date | null
+    status: boolean | null
+  }
+
+  export type GoalLogMaxAggregateOutputType = {
+    id: number | null
+    goalId: string | null
+    streak: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    day: Date | null
+    status: boolean | null
+  }
+
+  export type GoalLogCountAggregateOutputType = {
+    id: number
+    goalId: number
+    streak: number
+    createdAt: number
+    updatedAt: number
+    day: number
+    status: number
+    _all: number
+  }
+
+
+  export type GoalLogAvgAggregateInputType = {
+    id?: true
+    streak?: true
+  }
+
+  export type GoalLogSumAggregateInputType = {
+    id?: true
+    streak?: true
+  }
+
+  export type GoalLogMinAggregateInputType = {
+    id?: true
+    goalId?: true
+    streak?: true
+    createdAt?: true
+    updatedAt?: true
+    day?: true
+    status?: true
+  }
+
+  export type GoalLogMaxAggregateInputType = {
+    id?: true
+    goalId?: true
+    streak?: true
+    createdAt?: true
+    updatedAt?: true
+    day?: true
+    status?: true
+  }
+
+  export type GoalLogCountAggregateInputType = {
+    id?: true
+    goalId?: true
+    streak?: true
+    createdAt?: true
+    updatedAt?: true
+    day?: true
+    status?: true
+    _all?: true
+  }
+
+  export type GoalLogAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which goalLog to aggregate.
+     */
+    where?: goalLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of goalLogs to fetch.
+     */
+    orderBy?: goalLogOrderByWithRelationInput | goalLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: goalLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` goalLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` goalLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned goalLogs
+    **/
+    _count?: true | GoalLogCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: GoalLogAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: GoalLogSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: GoalLogMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: GoalLogMaxAggregateInputType
+  }
+
+  export type GetGoalLogAggregateType<T extends GoalLogAggregateArgs> = {
+        [P in keyof T & keyof AggregateGoalLog]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGoalLog[P]>
+      : GetScalarType<T[P], AggregateGoalLog[P]>
+  }
+
+
+
+
+  export type goalLogGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: goalLogWhereInput
+    orderBy?: goalLogOrderByWithAggregationInput | goalLogOrderByWithAggregationInput[]
+    by: GoalLogScalarFieldEnum[] | GoalLogScalarFieldEnum
+    having?: goalLogScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: GoalLogCountAggregateInputType | true
+    _avg?: GoalLogAvgAggregateInputType
+    _sum?: GoalLogSumAggregateInputType
+    _min?: GoalLogMinAggregateInputType
+    _max?: GoalLogMaxAggregateInputType
+  }
+
+  export type GoalLogGroupByOutputType = {
+    id: number
+    goalId: string
+    streak: number
+    createdAt: Date
+    updatedAt: Date
+    day: Date
+    status: boolean
+    _count: GoalLogCountAggregateOutputType | null
+    _avg: GoalLogAvgAggregateOutputType | null
+    _sum: GoalLogSumAggregateOutputType | null
+    _min: GoalLogMinAggregateOutputType | null
+    _max: GoalLogMaxAggregateOutputType | null
+  }
+
+  type GetGoalLogGroupByPayload<T extends goalLogGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<GoalLogGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof GoalLogGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], GoalLogGroupByOutputType[P]>
+            : GetScalarType<T[P], GoalLogGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type goalLogSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    goalId?: boolean
+    streak?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    day?: boolean
+    status?: boolean
+    goal?: boolean | GoalDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["goalLog"]>
+
+  export type goalLogSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    goalId?: boolean
+    streak?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    day?: boolean
+    status?: boolean
+    goal?: boolean | GoalDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["goalLog"]>
+
+  export type goalLogSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    goalId?: boolean
+    streak?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    day?: boolean
+    status?: boolean
+    goal?: boolean | GoalDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["goalLog"]>
+
+  export type goalLogSelectScalar = {
+    id?: boolean
+    goalId?: boolean
+    streak?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    day?: boolean
+    status?: boolean
+  }
+
+  export type goalLogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "goalId" | "streak" | "createdAt" | "updatedAt" | "day" | "status", ExtArgs["result"]["goalLog"]>
+  export type goalLogInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    goal?: boolean | GoalDefaultArgs<ExtArgs>
+  }
+  export type goalLogIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    goal?: boolean | GoalDefaultArgs<ExtArgs>
+  }
+  export type goalLogIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    goal?: boolean | GoalDefaultArgs<ExtArgs>
+  }
+
+  export type $goalLogPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "goalLog"
+    objects: {
+      goal: Prisma.$GoalPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      goalId: string
+      streak: number
+      createdAt: Date
+      updatedAt: Date
+      day: Date
+      status: boolean
+    }, ExtArgs["result"]["goalLog"]>
+    composites: {}
+  }
+
+  type goalLogGetPayload<S extends boolean | null | undefined | goalLogDefaultArgs> = $Result.GetResult<Prisma.$goalLogPayload, S>
+
+  type goalLogCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<goalLogFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: GoalLogCountAggregateInputType | true
+    }
+
+  export interface goalLogDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['goalLog'], meta: { name: 'goalLog' } }
+    /**
+     * Find zero or one GoalLog that matches the filter.
+     * @param {goalLogFindUniqueArgs} args - Arguments to find a GoalLog
+     * @example
+     * // Get one GoalLog
+     * const goalLog = await prisma.goalLog.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends goalLogFindUniqueArgs>(args: SelectSubset<T, goalLogFindUniqueArgs<ExtArgs>>): Prisma__goalLogClient<$Result.GetResult<Prisma.$goalLogPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one GoalLog that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {goalLogFindUniqueOrThrowArgs} args - Arguments to find a GoalLog
+     * @example
+     * // Get one GoalLog
+     * const goalLog = await prisma.goalLog.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends goalLogFindUniqueOrThrowArgs>(args: SelectSubset<T, goalLogFindUniqueOrThrowArgs<ExtArgs>>): Prisma__goalLogClient<$Result.GetResult<Prisma.$goalLogPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GoalLog that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {goalLogFindFirstArgs} args - Arguments to find a GoalLog
+     * @example
+     * // Get one GoalLog
+     * const goalLog = await prisma.goalLog.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends goalLogFindFirstArgs>(args?: SelectSubset<T, goalLogFindFirstArgs<ExtArgs>>): Prisma__goalLogClient<$Result.GetResult<Prisma.$goalLogPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GoalLog that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {goalLogFindFirstOrThrowArgs} args - Arguments to find a GoalLog
+     * @example
+     * // Get one GoalLog
+     * const goalLog = await prisma.goalLog.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends goalLogFindFirstOrThrowArgs>(args?: SelectSubset<T, goalLogFindFirstOrThrowArgs<ExtArgs>>): Prisma__goalLogClient<$Result.GetResult<Prisma.$goalLogPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more GoalLogs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {goalLogFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all GoalLogs
+     * const goalLogs = await prisma.goalLog.findMany()
+     * 
+     * // Get first 10 GoalLogs
+     * const goalLogs = await prisma.goalLog.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const goalLogWithIdOnly = await prisma.goalLog.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends goalLogFindManyArgs>(args?: SelectSubset<T, goalLogFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$goalLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a GoalLog.
+     * @param {goalLogCreateArgs} args - Arguments to create a GoalLog.
+     * @example
+     * // Create one GoalLog
+     * const GoalLog = await prisma.goalLog.create({
+     *   data: {
+     *     // ... data to create a GoalLog
+     *   }
+     * })
+     * 
+     */
+    create<T extends goalLogCreateArgs>(args: SelectSubset<T, goalLogCreateArgs<ExtArgs>>): Prisma__goalLogClient<$Result.GetResult<Prisma.$goalLogPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many GoalLogs.
+     * @param {goalLogCreateManyArgs} args - Arguments to create many GoalLogs.
+     * @example
+     * // Create many GoalLogs
+     * const goalLog = await prisma.goalLog.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends goalLogCreateManyArgs>(args?: SelectSubset<T, goalLogCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many GoalLogs and returns the data saved in the database.
+     * @param {goalLogCreateManyAndReturnArgs} args - Arguments to create many GoalLogs.
+     * @example
+     * // Create many GoalLogs
+     * const goalLog = await prisma.goalLog.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many GoalLogs and only return the `id`
+     * const goalLogWithIdOnly = await prisma.goalLog.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends goalLogCreateManyAndReturnArgs>(args?: SelectSubset<T, goalLogCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$goalLogPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a GoalLog.
+     * @param {goalLogDeleteArgs} args - Arguments to delete one GoalLog.
+     * @example
+     * // Delete one GoalLog
+     * const GoalLog = await prisma.goalLog.delete({
+     *   where: {
+     *     // ... filter to delete one GoalLog
+     *   }
+     * })
+     * 
+     */
+    delete<T extends goalLogDeleteArgs>(args: SelectSubset<T, goalLogDeleteArgs<ExtArgs>>): Prisma__goalLogClient<$Result.GetResult<Prisma.$goalLogPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one GoalLog.
+     * @param {goalLogUpdateArgs} args - Arguments to update one GoalLog.
+     * @example
+     * // Update one GoalLog
+     * const goalLog = await prisma.goalLog.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends goalLogUpdateArgs>(args: SelectSubset<T, goalLogUpdateArgs<ExtArgs>>): Prisma__goalLogClient<$Result.GetResult<Prisma.$goalLogPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more GoalLogs.
+     * @param {goalLogDeleteManyArgs} args - Arguments to filter GoalLogs to delete.
+     * @example
+     * // Delete a few GoalLogs
+     * const { count } = await prisma.goalLog.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends goalLogDeleteManyArgs>(args?: SelectSubset<T, goalLogDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GoalLogs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {goalLogUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many GoalLogs
+     * const goalLog = await prisma.goalLog.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends goalLogUpdateManyArgs>(args: SelectSubset<T, goalLogUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GoalLogs and returns the data updated in the database.
+     * @param {goalLogUpdateManyAndReturnArgs} args - Arguments to update many GoalLogs.
+     * @example
+     * // Update many GoalLogs
+     * const goalLog = await prisma.goalLog.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more GoalLogs and only return the `id`
+     * const goalLogWithIdOnly = await prisma.goalLog.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends goalLogUpdateManyAndReturnArgs>(args: SelectSubset<T, goalLogUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$goalLogPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one GoalLog.
+     * @param {goalLogUpsertArgs} args - Arguments to update or create a GoalLog.
+     * @example
+     * // Update or create a GoalLog
+     * const goalLog = await prisma.goalLog.upsert({
+     *   create: {
+     *     // ... data to create a GoalLog
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the GoalLog we want to update
+     *   }
+     * })
+     */
+    upsert<T extends goalLogUpsertArgs>(args: SelectSubset<T, goalLogUpsertArgs<ExtArgs>>): Prisma__goalLogClient<$Result.GetResult<Prisma.$goalLogPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of GoalLogs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {goalLogCountArgs} args - Arguments to filter GoalLogs to count.
+     * @example
+     * // Count the number of GoalLogs
+     * const count = await prisma.goalLog.count({
+     *   where: {
+     *     // ... the filter for the GoalLogs we want to count
+     *   }
+     * })
+    **/
+    count<T extends goalLogCountArgs>(
+      args?: Subset<T, goalLogCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], GoalLogCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a GoalLog.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GoalLogAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends GoalLogAggregateArgs>(args: Subset<T, GoalLogAggregateArgs>): Prisma.PrismaPromise<GetGoalLogAggregateType<T>>
+
+    /**
+     * Group by GoalLog.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {goalLogGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends goalLogGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: goalLogGroupByArgs['orderBy'] }
+        : { orderBy?: goalLogGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, goalLogGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGoalLogGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the goalLog model
+   */
+  readonly fields: goalLogFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for goalLog.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__goalLogClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    goal<T extends GoalDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GoalDefaultArgs<ExtArgs>>): Prisma__GoalClient<$Result.GetResult<Prisma.$GoalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the goalLog model
+   */
+  interface goalLogFieldRefs {
+    readonly id: FieldRef<"goalLog", 'Int'>
+    readonly goalId: FieldRef<"goalLog", 'String'>
+    readonly streak: FieldRef<"goalLog", 'Int'>
+    readonly createdAt: FieldRef<"goalLog", 'DateTime'>
+    readonly updatedAt: FieldRef<"goalLog", 'DateTime'>
+    readonly day: FieldRef<"goalLog", 'DateTime'>
+    readonly status: FieldRef<"goalLog", 'Boolean'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * goalLog findUnique
+   */
+  export type goalLogFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the goalLog
+     */
+    select?: goalLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the goalLog
+     */
+    omit?: goalLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: goalLogInclude<ExtArgs> | null
+    /**
+     * Filter, which goalLog to fetch.
+     */
+    where: goalLogWhereUniqueInput
+  }
+
+  /**
+   * goalLog findUniqueOrThrow
+   */
+  export type goalLogFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the goalLog
+     */
+    select?: goalLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the goalLog
+     */
+    omit?: goalLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: goalLogInclude<ExtArgs> | null
+    /**
+     * Filter, which goalLog to fetch.
+     */
+    where: goalLogWhereUniqueInput
+  }
+
+  /**
+   * goalLog findFirst
+   */
+  export type goalLogFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the goalLog
+     */
+    select?: goalLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the goalLog
+     */
+    omit?: goalLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: goalLogInclude<ExtArgs> | null
+    /**
+     * Filter, which goalLog to fetch.
+     */
+    where?: goalLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of goalLogs to fetch.
+     */
+    orderBy?: goalLogOrderByWithRelationInput | goalLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for goalLogs.
+     */
+    cursor?: goalLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` goalLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` goalLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of goalLogs.
+     */
+    distinct?: GoalLogScalarFieldEnum | GoalLogScalarFieldEnum[]
+  }
+
+  /**
+   * goalLog findFirstOrThrow
+   */
+  export type goalLogFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the goalLog
+     */
+    select?: goalLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the goalLog
+     */
+    omit?: goalLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: goalLogInclude<ExtArgs> | null
+    /**
+     * Filter, which goalLog to fetch.
+     */
+    where?: goalLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of goalLogs to fetch.
+     */
+    orderBy?: goalLogOrderByWithRelationInput | goalLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for goalLogs.
+     */
+    cursor?: goalLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` goalLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` goalLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of goalLogs.
+     */
+    distinct?: GoalLogScalarFieldEnum | GoalLogScalarFieldEnum[]
+  }
+
+  /**
+   * goalLog findMany
+   */
+  export type goalLogFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the goalLog
+     */
+    select?: goalLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the goalLog
+     */
+    omit?: goalLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: goalLogInclude<ExtArgs> | null
+    /**
+     * Filter, which goalLogs to fetch.
+     */
+    where?: goalLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of goalLogs to fetch.
+     */
+    orderBy?: goalLogOrderByWithRelationInput | goalLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing goalLogs.
+     */
+    cursor?: goalLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` goalLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` goalLogs.
+     */
+    skip?: number
+    distinct?: GoalLogScalarFieldEnum | GoalLogScalarFieldEnum[]
+  }
+
+  /**
+   * goalLog create
+   */
+  export type goalLogCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the goalLog
+     */
+    select?: goalLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the goalLog
+     */
+    omit?: goalLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: goalLogInclude<ExtArgs> | null
+    /**
+     * The data needed to create a goalLog.
+     */
+    data: XOR<goalLogCreateInput, goalLogUncheckedCreateInput>
+  }
+
+  /**
+   * goalLog createMany
+   */
+  export type goalLogCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many goalLogs.
+     */
+    data: goalLogCreateManyInput | goalLogCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * goalLog createManyAndReturn
+   */
+  export type goalLogCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the goalLog
+     */
+    select?: goalLogSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the goalLog
+     */
+    omit?: goalLogOmit<ExtArgs> | null
+    /**
+     * The data used to create many goalLogs.
+     */
+    data: goalLogCreateManyInput | goalLogCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: goalLogIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * goalLog update
+   */
+  export type goalLogUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the goalLog
+     */
+    select?: goalLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the goalLog
+     */
+    omit?: goalLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: goalLogInclude<ExtArgs> | null
+    /**
+     * The data needed to update a goalLog.
+     */
+    data: XOR<goalLogUpdateInput, goalLogUncheckedUpdateInput>
+    /**
+     * Choose, which goalLog to update.
+     */
+    where: goalLogWhereUniqueInput
+  }
+
+  /**
+   * goalLog updateMany
+   */
+  export type goalLogUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update goalLogs.
+     */
+    data: XOR<goalLogUpdateManyMutationInput, goalLogUncheckedUpdateManyInput>
+    /**
+     * Filter which goalLogs to update
+     */
+    where?: goalLogWhereInput
+    /**
+     * Limit how many goalLogs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * goalLog updateManyAndReturn
+   */
+  export type goalLogUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the goalLog
+     */
+    select?: goalLogSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the goalLog
+     */
+    omit?: goalLogOmit<ExtArgs> | null
+    /**
+     * The data used to update goalLogs.
+     */
+    data: XOR<goalLogUpdateManyMutationInput, goalLogUncheckedUpdateManyInput>
+    /**
+     * Filter which goalLogs to update
+     */
+    where?: goalLogWhereInput
+    /**
+     * Limit how many goalLogs to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: goalLogIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * goalLog upsert
+   */
+  export type goalLogUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the goalLog
+     */
+    select?: goalLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the goalLog
+     */
+    omit?: goalLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: goalLogInclude<ExtArgs> | null
+    /**
+     * The filter to search for the goalLog to update in case it exists.
+     */
+    where: goalLogWhereUniqueInput
+    /**
+     * In case the goalLog found by the `where` argument doesn't exist, create a new goalLog with this data.
+     */
+    create: XOR<goalLogCreateInput, goalLogUncheckedCreateInput>
+    /**
+     * In case the goalLog was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<goalLogUpdateInput, goalLogUncheckedUpdateInput>
+  }
+
+  /**
+   * goalLog delete
+   */
+  export type goalLogDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the goalLog
+     */
+    select?: goalLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the goalLog
+     */
+    omit?: goalLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: goalLogInclude<ExtArgs> | null
+    /**
+     * Filter which goalLog to delete.
+     */
+    where: goalLogWhereUniqueInput
+  }
+
+  /**
+   * goalLog deleteMany
+   */
+  export type goalLogDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which goalLogs to delete
+     */
+    where?: goalLogWhereInput
+    /**
+     * Limit how many goalLogs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * goalLog without action
+   */
+  export type goalLogDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the goalLog
+     */
+    select?: goalLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the goalLog
+     */
+    omit?: goalLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: goalLogInclude<ExtArgs> | null
   }
 
 
@@ -4500,16 +5774,29 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     note: 'note',
-    streak: 'streak',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     bestStreak: 'bestStreak',
+    streak: 'streak',
     userId: 'userId',
     color: 'color',
     tagId: 'tagId'
   };
 
   export type GoalScalarFieldEnum = (typeof GoalScalarFieldEnum)[keyof typeof GoalScalarFieldEnum]
+
+
+  export const GoalLogScalarFieldEnum: {
+    id: 'id',
+    goalId: 'goalId',
+    streak: 'streak',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    day: 'day',
+    status: 'status'
+  };
+
+  export type GoalLogScalarFieldEnum = (typeof GoalLogScalarFieldEnum)[keyof typeof GoalLogScalarFieldEnum]
 
 
   export const TagScalarFieldEnum: {
@@ -4577,6 +5864,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -4591,16 +5892,9 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'DateTime'
+   * Reference to a field of type 'Boolean'
    */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-  /**
-   * Reference to a field of type 'DateTime[]'
-   */
-  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -4628,30 +5922,32 @@ export namespace Prisma {
     id?: StringFilter<"Goal"> | string
     name?: StringFilter<"Goal"> | string
     note?: StringFilter<"Goal"> | string
-    streak?: IntFilter<"Goal"> | number
     createdAt?: DateTimeFilter<"Goal"> | Date | string
     updatedAt?: DateTimeFilter<"Goal"> | Date | string
     bestStreak?: IntFilter<"Goal"> | number
+    streak?: IntFilter<"Goal"> | number
     userId?: StringFilter<"Goal"> | string
     color?: StringFilter<"Goal"> | string
     tagId?: StringNullableFilter<"Goal"> | string | null
     tag?: XOR<TagNullableScalarRelationFilter, TagWhereInput> | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    goalLog?: GoalLogListRelationFilter
   }
 
   export type GoalOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
     note?: SortOrder
-    streak?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     bestStreak?: SortOrder
+    streak?: SortOrder
     userId?: SortOrder
     color?: SortOrder
     tagId?: SortOrderInput | SortOrder
     tag?: TagOrderByWithRelationInput
     user?: UserOrderByWithRelationInput
+    goalLog?: goalLogOrderByRelationAggregateInput
   }
 
   export type GoalWhereUniqueInput = Prisma.AtLeast<{
@@ -4661,25 +5957,26 @@ export namespace Prisma {
     NOT?: GoalWhereInput | GoalWhereInput[]
     name?: StringFilter<"Goal"> | string
     note?: StringFilter<"Goal"> | string
-    streak?: IntFilter<"Goal"> | number
     createdAt?: DateTimeFilter<"Goal"> | Date | string
     updatedAt?: DateTimeFilter<"Goal"> | Date | string
     bestStreak?: IntFilter<"Goal"> | number
+    streak?: IntFilter<"Goal"> | number
     userId?: StringFilter<"Goal"> | string
     color?: StringFilter<"Goal"> | string
     tagId?: StringNullableFilter<"Goal"> | string | null
     tag?: XOR<TagNullableScalarRelationFilter, TagWhereInput> | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    goalLog?: GoalLogListRelationFilter
   }, "id">
 
   export type GoalOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
     note?: SortOrder
-    streak?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     bestStreak?: SortOrder
+    streak?: SortOrder
     userId?: SortOrder
     color?: SortOrder
     tagId?: SortOrderInput | SortOrder
@@ -4697,13 +5994,80 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Goal"> | string
     name?: StringWithAggregatesFilter<"Goal"> | string
     note?: StringWithAggregatesFilter<"Goal"> | string
-    streak?: IntWithAggregatesFilter<"Goal"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Goal"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Goal"> | Date | string
     bestStreak?: IntWithAggregatesFilter<"Goal"> | number
+    streak?: IntWithAggregatesFilter<"Goal"> | number
     userId?: StringWithAggregatesFilter<"Goal"> | string
     color?: StringWithAggregatesFilter<"Goal"> | string
     tagId?: StringNullableWithAggregatesFilter<"Goal"> | string | null
+  }
+
+  export type goalLogWhereInput = {
+    AND?: goalLogWhereInput | goalLogWhereInput[]
+    OR?: goalLogWhereInput[]
+    NOT?: goalLogWhereInput | goalLogWhereInput[]
+    id?: IntFilter<"goalLog"> | number
+    goalId?: StringFilter<"goalLog"> | string
+    streak?: IntFilter<"goalLog"> | number
+    createdAt?: DateTimeFilter<"goalLog"> | Date | string
+    updatedAt?: DateTimeFilter<"goalLog"> | Date | string
+    day?: DateTimeFilter<"goalLog"> | Date | string
+    status?: BoolFilter<"goalLog"> | boolean
+    goal?: XOR<GoalScalarRelationFilter, GoalWhereInput>
+  }
+
+  export type goalLogOrderByWithRelationInput = {
+    id?: SortOrder
+    goalId?: SortOrder
+    streak?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    day?: SortOrder
+    status?: SortOrder
+    goal?: GoalOrderByWithRelationInput
+  }
+
+  export type goalLogWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: goalLogWhereInput | goalLogWhereInput[]
+    OR?: goalLogWhereInput[]
+    NOT?: goalLogWhereInput | goalLogWhereInput[]
+    goalId?: StringFilter<"goalLog"> | string
+    streak?: IntFilter<"goalLog"> | number
+    createdAt?: DateTimeFilter<"goalLog"> | Date | string
+    updatedAt?: DateTimeFilter<"goalLog"> | Date | string
+    day?: DateTimeFilter<"goalLog"> | Date | string
+    status?: BoolFilter<"goalLog"> | boolean
+    goal?: XOR<GoalScalarRelationFilter, GoalWhereInput>
+  }, "id">
+
+  export type goalLogOrderByWithAggregationInput = {
+    id?: SortOrder
+    goalId?: SortOrder
+    streak?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    day?: SortOrder
+    status?: SortOrder
+    _count?: goalLogCountOrderByAggregateInput
+    _avg?: goalLogAvgOrderByAggregateInput
+    _max?: goalLogMaxOrderByAggregateInput
+    _min?: goalLogMinOrderByAggregateInput
+    _sum?: goalLogSumOrderByAggregateInput
+  }
+
+  export type goalLogScalarWhereWithAggregatesInput = {
+    AND?: goalLogScalarWhereWithAggregatesInput | goalLogScalarWhereWithAggregatesInput[]
+    OR?: goalLogScalarWhereWithAggregatesInput[]
+    NOT?: goalLogScalarWhereWithAggregatesInput | goalLogScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"goalLog"> | number
+    goalId?: StringWithAggregatesFilter<"goalLog"> | string
+    streak?: IntWithAggregatesFilter<"goalLog"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"goalLog"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"goalLog"> | Date | string
+    day?: DateTimeWithAggregatesFilter<"goalLog"> | Date | string
+    status?: BoolWithAggregatesFilter<"goalLog"> | boolean
   }
 
   export type TagWhereInput = {
@@ -4821,62 +6185,66 @@ export namespace Prisma {
     id?: string
     name: string
     note: string
-    streak?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     bestStreak?: number
+    streak?: number
     color: string
     tag?: TagCreateNestedOneWithoutGoalInput
     user: UserCreateNestedOneWithoutGoalInput
+    goalLog?: goalLogCreateNestedManyWithoutGoalInput
   }
 
   export type GoalUncheckedCreateInput = {
     id?: string
     name: string
     note: string
-    streak?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     bestStreak?: number
+    streak?: number
     userId: string
     color: string
     tagId?: string | null
+    goalLog?: goalLogUncheckedCreateNestedManyWithoutGoalInput
   }
 
   export type GoalUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     note?: StringFieldUpdateOperationsInput | string
-    streak?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bestStreak?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
     color?: StringFieldUpdateOperationsInput | string
     tag?: TagUpdateOneWithoutGoalNestedInput
     user?: UserUpdateOneRequiredWithoutGoalNestedInput
+    goalLog?: goalLogUpdateManyWithoutGoalNestedInput
   }
 
   export type GoalUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     note?: StringFieldUpdateOperationsInput | string
-    streak?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bestStreak?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
     tagId?: NullableStringFieldUpdateOperationsInput | string | null
+    goalLog?: goalLogUncheckedUpdateManyWithoutGoalNestedInput
   }
 
   export type GoalCreateManyInput = {
     id?: string
     name: string
     note: string
-    streak?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     bestStreak?: number
+    streak?: number
     userId: string
     color: string
     tagId?: string | null
@@ -4886,10 +6254,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     note?: StringFieldUpdateOperationsInput | string
-    streak?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bestStreak?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
     color?: StringFieldUpdateOperationsInput | string
   }
 
@@ -4897,13 +6265,79 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     note?: StringFieldUpdateOperationsInput | string
-    streak?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bestStreak?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
     tagId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type goalLogCreateInput = {
+    streak?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    day?: Date | string
+    status: boolean
+    goal: GoalCreateNestedOneWithoutGoalLogInput
+  }
+
+  export type goalLogUncheckedCreateInput = {
+    id?: number
+    goalId: string
+    streak?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    day?: Date | string
+    status: boolean
+  }
+
+  export type goalLogUpdateInput = {
+    streak?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    day?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: BoolFieldUpdateOperationsInput | boolean
+    goal?: GoalUpdateOneRequiredWithoutGoalLogNestedInput
+  }
+
+  export type goalLogUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    goalId?: StringFieldUpdateOperationsInput | string
+    streak?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    day?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type goalLogCreateManyInput = {
+    id?: number
+    goalId: string
+    streak?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    day?: Date | string
+    status: boolean
+  }
+
+  export type goalLogUpdateManyMutationInput = {
+    streak?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    day?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type goalLogUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    goalId?: StringFieldUpdateOperationsInput | string
+    streak?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    day?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type TagCreateInput = {
@@ -5037,17 +6471,6 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -5057,6 +6480,17 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
@@ -5084,37 +6518,47 @@ export namespace Prisma {
     isNot?: UserWhereInput
   }
 
+  export type GoalLogListRelationFilter = {
+    every?: goalLogWhereInput
+    some?: goalLogWhereInput
+    none?: goalLogWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type goalLogOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type GoalCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     note?: SortOrder
-    streak?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     bestStreak?: SortOrder
+    streak?: SortOrder
     userId?: SortOrder
     color?: SortOrder
     tagId?: SortOrder
   }
 
   export type GoalAvgOrderByAggregateInput = {
-    streak?: SortOrder
     bestStreak?: SortOrder
+    streak?: SortOrder
   }
 
   export type GoalMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     note?: SortOrder
-    streak?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     bestStreak?: SortOrder
+    streak?: SortOrder
     userId?: SortOrder
     color?: SortOrder
     tagId?: SortOrder
@@ -5124,18 +6568,18 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     note?: SortOrder
-    streak?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     bestStreak?: SortOrder
+    streak?: SortOrder
     userId?: SortOrder
     color?: SortOrder
     tagId?: SortOrder
   }
 
   export type GoalSumOrderByAggregateInput = {
-    streak?: SortOrder
     bestStreak?: SortOrder
+    streak?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -5156,6 +6600,20 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -5170,20 +6628,6 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -5202,6 +6646,64 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type GoalScalarRelationFilter = {
+    is?: GoalWhereInput
+    isNot?: GoalWhereInput
+  }
+
+  export type goalLogCountOrderByAggregateInput = {
+    id?: SortOrder
+    goalId?: SortOrder
+    streak?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    day?: SortOrder
+    status?: SortOrder
+  }
+
+  export type goalLogAvgOrderByAggregateInput = {
+    id?: SortOrder
+    streak?: SortOrder
+  }
+
+  export type goalLogMaxOrderByAggregateInput = {
+    id?: SortOrder
+    goalId?: SortOrder
+    streak?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    day?: SortOrder
+    status?: SortOrder
+  }
+
+  export type goalLogMinOrderByAggregateInput = {
+    id?: SortOrder
+    goalId?: SortOrder
+    streak?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    day?: SortOrder
+    status?: SortOrder
+  }
+
+  export type goalLogSumOrderByAggregateInput = {
+    id?: SortOrder
+    streak?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type GoalListRelationFilter = {
@@ -5281,8 +6783,26 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type goalLogCreateNestedManyWithoutGoalInput = {
+    create?: XOR<goalLogCreateWithoutGoalInput, goalLogUncheckedCreateWithoutGoalInput> | goalLogCreateWithoutGoalInput[] | goalLogUncheckedCreateWithoutGoalInput[]
+    connectOrCreate?: goalLogCreateOrConnectWithoutGoalInput | goalLogCreateOrConnectWithoutGoalInput[]
+    createMany?: goalLogCreateManyGoalInputEnvelope
+    connect?: goalLogWhereUniqueInput | goalLogWhereUniqueInput[]
+  }
+
+  export type goalLogUncheckedCreateNestedManyWithoutGoalInput = {
+    create?: XOR<goalLogCreateWithoutGoalInput, goalLogUncheckedCreateWithoutGoalInput> | goalLogCreateWithoutGoalInput[] | goalLogUncheckedCreateWithoutGoalInput[]
+    connectOrCreate?: goalLogCreateOrConnectWithoutGoalInput | goalLogCreateOrConnectWithoutGoalInput[]
+    createMany?: goalLogCreateManyGoalInputEnvelope
+    connect?: goalLogWhereUniqueInput | goalLogWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -5291,10 +6811,6 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
   }
 
   export type TagUpdateOneWithoutGoalNestedInput = {
@@ -5315,8 +6831,54 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutGoalInput, UserUpdateWithoutGoalInput>, UserUncheckedUpdateWithoutGoalInput>
   }
 
+  export type goalLogUpdateManyWithoutGoalNestedInput = {
+    create?: XOR<goalLogCreateWithoutGoalInput, goalLogUncheckedCreateWithoutGoalInput> | goalLogCreateWithoutGoalInput[] | goalLogUncheckedCreateWithoutGoalInput[]
+    connectOrCreate?: goalLogCreateOrConnectWithoutGoalInput | goalLogCreateOrConnectWithoutGoalInput[]
+    upsert?: goalLogUpsertWithWhereUniqueWithoutGoalInput | goalLogUpsertWithWhereUniqueWithoutGoalInput[]
+    createMany?: goalLogCreateManyGoalInputEnvelope
+    set?: goalLogWhereUniqueInput | goalLogWhereUniqueInput[]
+    disconnect?: goalLogWhereUniqueInput | goalLogWhereUniqueInput[]
+    delete?: goalLogWhereUniqueInput | goalLogWhereUniqueInput[]
+    connect?: goalLogWhereUniqueInput | goalLogWhereUniqueInput[]
+    update?: goalLogUpdateWithWhereUniqueWithoutGoalInput | goalLogUpdateWithWhereUniqueWithoutGoalInput[]
+    updateMany?: goalLogUpdateManyWithWhereWithoutGoalInput | goalLogUpdateManyWithWhereWithoutGoalInput[]
+    deleteMany?: goalLogScalarWhereInput | goalLogScalarWhereInput[]
+  }
+
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type goalLogUncheckedUpdateManyWithoutGoalNestedInput = {
+    create?: XOR<goalLogCreateWithoutGoalInput, goalLogUncheckedCreateWithoutGoalInput> | goalLogCreateWithoutGoalInput[] | goalLogUncheckedCreateWithoutGoalInput[]
+    connectOrCreate?: goalLogCreateOrConnectWithoutGoalInput | goalLogCreateOrConnectWithoutGoalInput[]
+    upsert?: goalLogUpsertWithWhereUniqueWithoutGoalInput | goalLogUpsertWithWhereUniqueWithoutGoalInput[]
+    createMany?: goalLogCreateManyGoalInputEnvelope
+    set?: goalLogWhereUniqueInput | goalLogWhereUniqueInput[]
+    disconnect?: goalLogWhereUniqueInput | goalLogWhereUniqueInput[]
+    delete?: goalLogWhereUniqueInput | goalLogWhereUniqueInput[]
+    connect?: goalLogWhereUniqueInput | goalLogWhereUniqueInput[]
+    update?: goalLogUpdateWithWhereUniqueWithoutGoalInput | goalLogUpdateWithWhereUniqueWithoutGoalInput[]
+    updateMany?: goalLogUpdateManyWithWhereWithoutGoalInput | goalLogUpdateManyWithWhereWithoutGoalInput[]
+    deleteMany?: goalLogScalarWhereInput | goalLogScalarWhereInput[]
+  }
+
+  export type GoalCreateNestedOneWithoutGoalLogInput = {
+    create?: XOR<GoalCreateWithoutGoalLogInput, GoalUncheckedCreateWithoutGoalLogInput>
+    connectOrCreate?: GoalCreateOrConnectWithoutGoalLogInput
+    connect?: GoalWhereUniqueInput
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type GoalUpdateOneRequiredWithoutGoalLogNestedInput = {
+    create?: XOR<GoalCreateWithoutGoalLogInput, GoalUncheckedCreateWithoutGoalLogInput>
+    connectOrCreate?: GoalCreateOrConnectWithoutGoalLogInput
+    upsert?: GoalUpsertWithoutGoalLogInput
+    connect?: GoalWhereUniqueInput
+    update?: XOR<XOR<GoalUpdateToOneWithWhereWithoutGoalLogInput, GoalUpdateWithoutGoalLogInput>, GoalUncheckedUpdateWithoutGoalLogInput>
   }
 
   export type UserCreateNestedOneWithoutTagInput = {
@@ -5473,17 +7035,6 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -5493,6 +7044,17 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
@@ -5526,6 +7088,20 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -5551,20 +7127,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -5593,6 +7155,19 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type TagCreateWithoutGoalInput = {
@@ -5635,6 +7210,33 @@ export namespace Prisma {
   export type UserCreateOrConnectWithoutGoalInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutGoalInput, UserUncheckedCreateWithoutGoalInput>
+  }
+
+  export type goalLogCreateWithoutGoalInput = {
+    streak?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    day?: Date | string
+    status: boolean
+  }
+
+  export type goalLogUncheckedCreateWithoutGoalInput = {
+    id?: number
+    streak?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    day?: Date | string
+    status: boolean
+  }
+
+  export type goalLogCreateOrConnectWithoutGoalInput = {
+    where: goalLogWhereUniqueInput
+    create: XOR<goalLogCreateWithoutGoalInput, goalLogUncheckedCreateWithoutGoalInput>
+  }
+
+  export type goalLogCreateManyGoalInputEnvelope = {
+    data: goalLogCreateManyGoalInput | goalLogCreateManyGoalInput[]
+    skipDuplicates?: boolean
   }
 
   export type TagUpsertWithoutGoalInput = {
@@ -5691,6 +7293,103 @@ export namespace Prisma {
     Tag?: TagUncheckedUpdateManyWithoutUserNestedInput
   }
 
+  export type goalLogUpsertWithWhereUniqueWithoutGoalInput = {
+    where: goalLogWhereUniqueInput
+    update: XOR<goalLogUpdateWithoutGoalInput, goalLogUncheckedUpdateWithoutGoalInput>
+    create: XOR<goalLogCreateWithoutGoalInput, goalLogUncheckedCreateWithoutGoalInput>
+  }
+
+  export type goalLogUpdateWithWhereUniqueWithoutGoalInput = {
+    where: goalLogWhereUniqueInput
+    data: XOR<goalLogUpdateWithoutGoalInput, goalLogUncheckedUpdateWithoutGoalInput>
+  }
+
+  export type goalLogUpdateManyWithWhereWithoutGoalInput = {
+    where: goalLogScalarWhereInput
+    data: XOR<goalLogUpdateManyMutationInput, goalLogUncheckedUpdateManyWithoutGoalInput>
+  }
+
+  export type goalLogScalarWhereInput = {
+    AND?: goalLogScalarWhereInput | goalLogScalarWhereInput[]
+    OR?: goalLogScalarWhereInput[]
+    NOT?: goalLogScalarWhereInput | goalLogScalarWhereInput[]
+    id?: IntFilter<"goalLog"> | number
+    goalId?: StringFilter<"goalLog"> | string
+    streak?: IntFilter<"goalLog"> | number
+    createdAt?: DateTimeFilter<"goalLog"> | Date | string
+    updatedAt?: DateTimeFilter<"goalLog"> | Date | string
+    day?: DateTimeFilter<"goalLog"> | Date | string
+    status?: BoolFilter<"goalLog"> | boolean
+  }
+
+  export type GoalCreateWithoutGoalLogInput = {
+    id?: string
+    name: string
+    note: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bestStreak?: number
+    streak?: number
+    color: string
+    tag?: TagCreateNestedOneWithoutGoalInput
+    user: UserCreateNestedOneWithoutGoalInput
+  }
+
+  export type GoalUncheckedCreateWithoutGoalLogInput = {
+    id?: string
+    name: string
+    note: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bestStreak?: number
+    streak?: number
+    userId: string
+    color: string
+    tagId?: string | null
+  }
+
+  export type GoalCreateOrConnectWithoutGoalLogInput = {
+    where: GoalWhereUniqueInput
+    create: XOR<GoalCreateWithoutGoalLogInput, GoalUncheckedCreateWithoutGoalLogInput>
+  }
+
+  export type GoalUpsertWithoutGoalLogInput = {
+    update: XOR<GoalUpdateWithoutGoalLogInput, GoalUncheckedUpdateWithoutGoalLogInput>
+    create: XOR<GoalCreateWithoutGoalLogInput, GoalUncheckedCreateWithoutGoalLogInput>
+    where?: GoalWhereInput
+  }
+
+  export type GoalUpdateToOneWithWhereWithoutGoalLogInput = {
+    where?: GoalWhereInput
+    data: XOR<GoalUpdateWithoutGoalLogInput, GoalUncheckedUpdateWithoutGoalLogInput>
+  }
+
+  export type GoalUpdateWithoutGoalLogInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    note?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bestStreak?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    color?: StringFieldUpdateOperationsInput | string
+    tag?: TagUpdateOneWithoutGoalNestedInput
+    user?: UserUpdateOneRequiredWithoutGoalNestedInput
+  }
+
+  export type GoalUncheckedUpdateWithoutGoalLogInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    note?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bestStreak?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
+    tagId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type UserCreateWithoutTagInput = {
     id?: string
     username: string
@@ -5720,24 +7419,26 @@ export namespace Prisma {
     id?: string
     name: string
     note: string
-    streak?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     bestStreak?: number
+    streak?: number
     color: string
     user: UserCreateNestedOneWithoutGoalInput
+    goalLog?: goalLogCreateNestedManyWithoutGoalInput
   }
 
   export type GoalUncheckedCreateWithoutTagInput = {
     id?: string
     name: string
     note: string
-    streak?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     bestStreak?: number
+    streak?: number
     userId: string
     color: string
+    goalLog?: goalLogUncheckedCreateNestedManyWithoutGoalInput
   }
 
   export type GoalCreateOrConnectWithoutTagInput = {
@@ -5804,10 +7505,10 @@ export namespace Prisma {
     id?: StringFilter<"Goal"> | string
     name?: StringFilter<"Goal"> | string
     note?: StringFilter<"Goal"> | string
-    streak?: IntFilter<"Goal"> | number
     createdAt?: DateTimeFilter<"Goal"> | Date | string
     updatedAt?: DateTimeFilter<"Goal"> | Date | string
     bestStreak?: IntFilter<"Goal"> | number
+    streak?: IntFilter<"Goal"> | number
     userId?: StringFilter<"Goal"> | string
     color?: StringFilter<"Goal"> | string
     tagId?: StringNullableFilter<"Goal"> | string | null
@@ -5817,24 +7518,26 @@ export namespace Prisma {
     id?: string
     name: string
     note: string
-    streak?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     bestStreak?: number
+    streak?: number
     color: string
     tag?: TagCreateNestedOneWithoutGoalInput
+    goalLog?: goalLogCreateNestedManyWithoutGoalInput
   }
 
   export type GoalUncheckedCreateWithoutUserInput = {
     id?: string
     name: string
     note: string
-    streak?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     bestStreak?: number
+    streak?: number
     color: string
     tagId?: string | null
+    goalLog?: goalLogUncheckedCreateNestedManyWithoutGoalInput
   }
 
   export type GoalCreateOrConnectWithoutUserInput = {
@@ -5910,14 +7613,49 @@ export namespace Prisma {
     userId?: StringFilter<"Tag"> | string
   }
 
+  export type goalLogCreateManyGoalInput = {
+    id?: number
+    streak?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    day?: Date | string
+    status: boolean
+  }
+
+  export type goalLogUpdateWithoutGoalInput = {
+    streak?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    day?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type goalLogUncheckedUpdateWithoutGoalInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    day?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type goalLogUncheckedUpdateManyWithoutGoalInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    day?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: BoolFieldUpdateOperationsInput | boolean
+  }
+
   export type GoalCreateManyTagInput = {
     id?: string
     name: string
     note: string
-    streak?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     bestStreak?: number
+    streak?: number
     userId: string
     color: string
   }
@@ -5926,34 +7664,36 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     note?: StringFieldUpdateOperationsInput | string
-    streak?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bestStreak?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
     color?: StringFieldUpdateOperationsInput | string
     user?: UserUpdateOneRequiredWithoutGoalNestedInput
+    goalLog?: goalLogUpdateManyWithoutGoalNestedInput
   }
 
   export type GoalUncheckedUpdateWithoutTagInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     note?: StringFieldUpdateOperationsInput | string
-    streak?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bestStreak?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
+    goalLog?: goalLogUncheckedUpdateManyWithoutGoalNestedInput
   }
 
   export type GoalUncheckedUpdateManyWithoutTagInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     note?: StringFieldUpdateOperationsInput | string
-    streak?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bestStreak?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
   }
@@ -5962,10 +7702,10 @@ export namespace Prisma {
     id?: string
     name: string
     note: string
-    streak?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     bestStreak?: number
+    streak?: number
     color: string
     tagId?: string | null
   }
@@ -5979,34 +7719,36 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     note?: StringFieldUpdateOperationsInput | string
-    streak?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bestStreak?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
     color?: StringFieldUpdateOperationsInput | string
     tag?: TagUpdateOneWithoutGoalNestedInput
+    goalLog?: goalLogUpdateManyWithoutGoalNestedInput
   }
 
   export type GoalUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     note?: StringFieldUpdateOperationsInput | string
-    streak?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bestStreak?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
     color?: StringFieldUpdateOperationsInput | string
     tagId?: NullableStringFieldUpdateOperationsInput | string | null
+    goalLog?: goalLogUncheckedUpdateManyWithoutGoalNestedInput
   }
 
   export type GoalUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     note?: StringFieldUpdateOperationsInput | string
-    streak?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bestStreak?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
     color?: StringFieldUpdateOperationsInput | string
     tagId?: NullableStringFieldUpdateOperationsInput | string | null
   }

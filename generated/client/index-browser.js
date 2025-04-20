@@ -121,13 +121,23 @@ exports.Prisma.GoalScalarFieldEnum = {
   id: 'id',
   name: 'name',
   note: 'note',
-  streak: 'streak',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   bestStreak: 'bestStreak',
+  streak: 'streak',
   userId: 'userId',
   color: 'color',
   tagId: 'tagId'
+};
+
+exports.Prisma.GoalLogScalarFieldEnum = {
+  id: 'id',
+  goalId: 'goalId',
+  streak: 'streak',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  day: 'day',
+  status: 'status'
 };
 
 exports.Prisma.TagScalarFieldEnum = {
@@ -163,6 +173,7 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   Goal: 'Goal',
+  goalLog: 'goalLog',
   Tag: 'Tag',
   User: 'User'
 };
