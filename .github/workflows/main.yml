@@ -54,5 +54,5 @@ jobs:
             if [ -n "$OLD_IMAGE_ID" ]; then
               sudo docker rmi $OLD_IMAGE_ID || true
             fi
-            sudo docker run -d --name 21days-api -p 3000:3000 patthadon/21days-api
+            sudo docker run -d --name 21days-api -p 3000:3001 patthadon/21days-api
             sudo docker network connect nginx-proxy_default 21days-api
