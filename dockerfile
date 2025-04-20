@@ -31,6 +31,9 @@ RUN pnpm install --prod --frozen-lockfile
 # Copy the rest of the application code
 COPY . .
 
+RUN npx prisma generate
+
+
 # Build the application
 RUN pnpm build
 
