@@ -1,5 +1,5 @@
 # Use official Node.js image
-FROM node:18-alpine
+FROM node:18
 
 # Install pnpm globally
 RUN npm install -g pnpm
