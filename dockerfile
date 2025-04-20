@@ -16,6 +16,12 @@ RUN pnpm add -g @nestjs/cli
 # Copy package.json and pnpm-lock.yaml for installing dependencies
 COPY package.json pnpm-lock.yaml ./
 
+ARG JWT_SECRET
+# Set the JWT_SECRET environment variable
+ENV JWT_SECRET=$JWT_SECRET
+RUN echo "JWT_SECRET=$JWT_SECRET" >> .env
+
+
 # Install only production dependencies
 RUN pnpm install --prod --frozen-lockfile
 

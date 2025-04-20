@@ -19,7 +19,11 @@ jobs:
       # Step 2: (Optional) Build Docker image if applicable
       - name: Build Docker image
         run: |
-          docker build --platform linux/amd64 -t 21days-api:latest .
+          docker build \
+          --platform linux/amd64 \
+          --build-arg NEXT_PUBLIC_API_URL=${{ vars.NEXT_PUBLIC_API_URL }} \
+          --build-arg JWT_SECRET=${{ secrets.JWT_SECRET }} \
+          -t 21days-api:latest .
 
       # Step 3: Log in to Docker Hub (Optional)
       - name: Log in to Docker Hub
@@ -45,5 +49,10 @@ jobs:
             sudo docker pull patthadon/21days-api
             sudo docker stop 21days-api || true
             sudo docker rm 21days-api || true
+            echo "Removing old image..."
+            OLD_IMAGE_ID=$(sudo docker images patthadon/21days-api -q | tail -n +2)
+            if [ -n "$OLD_IMAGE_ID" ]; then
+              sudo docker rmi $OLD_IMAGE_ID || true
+            fi
             sudo docker run -d --name 21days-api -p 3000:3000 patthadon/21days-api
             sudo docker network connect nginx-proxy_default 21days-api
