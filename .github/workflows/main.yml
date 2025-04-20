@@ -21,8 +21,8 @@ jobs:
         run: |
           docker build \
           --platform linux/amd64 \
-          --build-arg NEXT_PUBLIC_API_URL=${{ vars.NEXT_PUBLIC_API_URL }} \
           --build-arg JWT_SECRET=${{ secrets.JWT_SECRET }} \
+          --build-arg DATABASE_URL=${{ secrets.DATABASE_URL }} \
           -t 21days-api:latest .
 
       # Step 3: Log in to Docker Hub (Optional)

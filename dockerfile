@@ -17,9 +17,12 @@ RUN pnpm add -g @nestjs/cli
 COPY package.json pnpm-lock.yaml ./
 
 ARG JWT_SECRET
+ARG DATABASE_URL
 # Set the JWT_SECRET environment variable
 ENV JWT_SECRET=$JWT_SECRET
+ENV DATABASE_URL=$DATABASE_URL
 RUN echo "JWT_SECRET=$JWT_SECRET" >> .env
+RUN echo "DATABASE_URL=$DATABASE_URL" >> .env
 
 
 # Install only production dependencies
