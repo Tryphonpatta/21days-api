@@ -25,6 +25,9 @@ export class GoalService {
         userId: userId,
         ...(tag && { tagId: tag }),
       },
+      include: {
+        tag: true,
+      },
     });
     return goals;
   }
