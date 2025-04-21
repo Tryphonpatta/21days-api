@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, UseGuards, Req } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  UseGuards,
+  Req,
+  Delete,
+  Param,
+} from '@nestjs/common';
 import { TagService } from './tag.service';
 import { CreateTagDto } from './dto/create-tag.dto';
 import { JwtAuthGuard } from 'src/auth/guard/jwt.guard';
@@ -18,5 +27,11 @@ export class TagController {
   findAll(@Req() req) {
     const userId = req.user.userId;
     return this.tagService.findAll(userId);
+  }
+
+  @Delete(':id')
+  remove(@Req() req, @Param('id') id: string) {
+    const userId = req.user.userId;
+    return this.tagService.remove(userId, id);
   }
 }

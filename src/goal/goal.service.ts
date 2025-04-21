@@ -47,6 +47,7 @@ export class GoalService {
         },
       },
     });
+    // console.log(goals);
     return goals.map((goal) => {
       return {
         ...goal,

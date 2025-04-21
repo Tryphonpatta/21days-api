@@ -12,4 +12,10 @@ export class UserController {
     const user = req.user;
     return this.userService.findAllTags(user.userId);
   }
+
+  @Get('stats')
+  findStats(@Req() req) {
+    const user = req.user;
+    return this.userService.findStats(user.userId);
+  }
 }

@@ -32,6 +32,13 @@ export class GoalController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Get('tag/:tagId')
+  findAllByTag(@Param('tagId') tag: string, @Req() req) {
+    const user = req.user;
+    return this.goalService.findAll(user.userId, tag);
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id') id: string, @Req() req) {
     const user = req.user;

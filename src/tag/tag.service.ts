@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import { CreateTagDto } from './dto/create-tag.dto';
 import { PrismaService } from 'src/prisma.service';
 
@@ -24,7 +24,18 @@ export class TagService {
     return tags;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} tag`;
+  async remove(userId: string, id: string) {
+    try {
+      const tag = await this.prisma.tag.delete({
+        where: {
+          id: id,
+          userId: userId,
+        },
+      });
+      return tag;
+    } catch (error) {
+      console.log(error);
+      return new HttpException(error.message, error.status);
+    }
   }
 }
