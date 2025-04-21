@@ -7,6 +7,7 @@ import { GoalModule } from './goal/goal.module';
 import { CompleteModule } from './complete/complete.module';
 import { StreakModule } from './streak/streak.module';
 import { TagModule } from './tag/tag.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { TagModule } from './tag/tag.module';
     CompleteModule,
     StreakModule,
     TagModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -3,6 +3,7 @@ model User {
   username  String   @unique
   password  String
   email     String   @unique
+  img       String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   Goal      Goal[]

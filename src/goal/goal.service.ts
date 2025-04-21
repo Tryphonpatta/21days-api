@@ -49,6 +49,9 @@ export class GoalService {
       where: {
         id: id,
       },
+      include: {
+        tag: true,
+      },
     });
     return goal;
   }
