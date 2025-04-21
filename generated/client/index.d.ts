@@ -1274,6 +1274,7 @@ export namespace Prisma {
     bestStreak: number | null
     streak: number | null
     userId: string | null
+    description: string | null
     color: string | null
     tagId: string | null
   }
@@ -1287,6 +1288,7 @@ export namespace Prisma {
     bestStreak: number | null
     streak: number | null
     userId: string | null
+    description: string | null
     color: string | null
     tagId: string | null
   }
@@ -1300,6 +1302,7 @@ export namespace Prisma {
     bestStreak: number
     streak: number
     userId: number
+    description: number
     color: number
     tagId: number
     _all: number
@@ -1325,6 +1328,7 @@ export namespace Prisma {
     bestStreak?: true
     streak?: true
     userId?: true
+    description?: true
     color?: true
     tagId?: true
   }
@@ -1338,6 +1342,7 @@ export namespace Prisma {
     bestStreak?: true
     streak?: true
     userId?: true
+    description?: true
     color?: true
     tagId?: true
   }
@@ -1351,6 +1356,7 @@ export namespace Prisma {
     bestStreak?: true
     streak?: true
     userId?: true
+    description?: true
     color?: true
     tagId?: true
     _all?: true
@@ -1451,6 +1457,7 @@ export namespace Prisma {
     bestStreak: number
     streak: number
     userId: string
+    description: string
     color: string
     tagId: string | null
     _count: GoalCountAggregateOutputType | null
@@ -1483,6 +1490,7 @@ export namespace Prisma {
     bestStreak?: boolean
     streak?: boolean
     userId?: boolean
+    description?: boolean
     color?: boolean
     tagId?: boolean
     tag?: boolean | Goal$tagArgs<ExtArgs>
@@ -1500,6 +1508,7 @@ export namespace Prisma {
     bestStreak?: boolean
     streak?: boolean
     userId?: boolean
+    description?: boolean
     color?: boolean
     tagId?: boolean
     tag?: boolean | Goal$tagArgs<ExtArgs>
@@ -1515,6 +1524,7 @@ export namespace Prisma {
     bestStreak?: boolean
     streak?: boolean
     userId?: boolean
+    description?: boolean
     color?: boolean
     tagId?: boolean
     tag?: boolean | Goal$tagArgs<ExtArgs>
@@ -1530,11 +1540,12 @@ export namespace Prisma {
     bestStreak?: boolean
     streak?: boolean
     userId?: boolean
+    description?: boolean
     color?: boolean
     tagId?: boolean
   }
 
-  export type GoalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "note" | "createdAt" | "updatedAt" | "bestStreak" | "streak" | "userId" | "color" | "tagId", ExtArgs["result"]["goal"]>
+  export type GoalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "note" | "createdAt" | "updatedAt" | "bestStreak" | "streak" | "userId" | "description" | "color" | "tagId", ExtArgs["result"]["goal"]>
   export type GoalInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tag?: boolean | Goal$tagArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -1566,6 +1577,7 @@ export namespace Prisma {
       bestStreak: number
       streak: number
       userId: string
+      description: string
       color: string
       tagId: string | null
     }, ExtArgs["result"]["goal"]>
@@ -2002,6 +2014,7 @@ export namespace Prisma {
     readonly bestStreak: FieldRef<"Goal", 'Int'>
     readonly streak: FieldRef<"Goal", 'Int'>
     readonly userId: FieldRef<"Goal", 'String'>
+    readonly description: FieldRef<"Goal", 'String'>
     readonly color: FieldRef<"Goal", 'String'>
     readonly tagId: FieldRef<"Goal", 'String'>
   }
@@ -4660,6 +4673,7 @@ export namespace Prisma {
     username: string | null
     password: string | null
     email: string | null
+    img: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -4669,6 +4683,7 @@ export namespace Prisma {
     username: string | null
     password: string | null
     email: string | null
+    img: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -4678,6 +4693,7 @@ export namespace Prisma {
     username: number
     password: number
     email: number
+    img: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -4689,6 +4705,7 @@ export namespace Prisma {
     username?: true
     password?: true
     email?: true
+    img?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -4698,6 +4715,7 @@ export namespace Prisma {
     username?: true
     password?: true
     email?: true
+    img?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -4707,6 +4725,7 @@ export namespace Prisma {
     username?: true
     password?: true
     email?: true
+    img?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -4789,6 +4808,7 @@ export namespace Prisma {
     username: string
     password: string
     email: string
+    img: string | null
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
@@ -4815,6 +4835,7 @@ export namespace Prisma {
     username?: boolean
     password?: boolean
     email?: boolean
+    img?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     Goal?: boolean | User$GoalArgs<ExtArgs>
@@ -4827,6 +4848,7 @@ export namespace Prisma {
     username?: boolean
     password?: boolean
     email?: boolean
+    img?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -4836,6 +4858,7 @@ export namespace Prisma {
     username?: boolean
     password?: boolean
     email?: boolean
+    img?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -4845,11 +4868,12 @@ export namespace Prisma {
     username?: boolean
     password?: boolean
     email?: boolean
+    img?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "password" | "email" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "password" | "email" | "img" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Goal?: boolean | User$GoalArgs<ExtArgs>
     Tag?: boolean | User$TagArgs<ExtArgs>
@@ -4869,6 +4893,7 @@ export namespace Prisma {
       username: string
       password: string
       email: string
+      img: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -5300,6 +5325,7 @@ export namespace Prisma {
     readonly username: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
+    readonly img: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
@@ -5779,6 +5805,7 @@ export namespace Prisma {
     bestStreak: 'bestStreak',
     streak: 'streak',
     userId: 'userId',
+    description: 'description',
     color: 'color',
     tagId: 'tagId'
   };
@@ -5813,6 +5840,7 @@ export namespace Prisma {
     username: 'username',
     password: 'password',
     email: 'email',
+    img: 'img',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -5927,6 +5955,7 @@ export namespace Prisma {
     bestStreak?: IntFilter<"Goal"> | number
     streak?: IntFilter<"Goal"> | number
     userId?: StringFilter<"Goal"> | string
+    description?: StringFilter<"Goal"> | string
     color?: StringFilter<"Goal"> | string
     tagId?: StringNullableFilter<"Goal"> | string | null
     tag?: XOR<TagNullableScalarRelationFilter, TagWhereInput> | null
@@ -5943,6 +5972,7 @@ export namespace Prisma {
     bestStreak?: SortOrder
     streak?: SortOrder
     userId?: SortOrder
+    description?: SortOrder
     color?: SortOrder
     tagId?: SortOrderInput | SortOrder
     tag?: TagOrderByWithRelationInput
@@ -5962,6 +5992,7 @@ export namespace Prisma {
     bestStreak?: IntFilter<"Goal"> | number
     streak?: IntFilter<"Goal"> | number
     userId?: StringFilter<"Goal"> | string
+    description?: StringFilter<"Goal"> | string
     color?: StringFilter<"Goal"> | string
     tagId?: StringNullableFilter<"Goal"> | string | null
     tag?: XOR<TagNullableScalarRelationFilter, TagWhereInput> | null
@@ -5978,6 +6009,7 @@ export namespace Prisma {
     bestStreak?: SortOrder
     streak?: SortOrder
     userId?: SortOrder
+    description?: SortOrder
     color?: SortOrder
     tagId?: SortOrderInput | SortOrder
     _count?: GoalCountOrderByAggregateInput
@@ -5999,6 +6031,7 @@ export namespace Prisma {
     bestStreak?: IntWithAggregatesFilter<"Goal"> | number
     streak?: IntWithAggregatesFilter<"Goal"> | number
     userId?: StringWithAggregatesFilter<"Goal"> | string
+    description?: StringWithAggregatesFilter<"Goal"> | string
     color?: StringWithAggregatesFilter<"Goal"> | string
     tagId?: StringNullableWithAggregatesFilter<"Goal"> | string | null
   }
@@ -6126,6 +6159,7 @@ export namespace Prisma {
     username?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
+    img?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     Goal?: GoalListRelationFilter
@@ -6137,6 +6171,7 @@ export namespace Prisma {
     username?: SortOrder
     password?: SortOrder
     email?: SortOrder
+    img?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     Goal?: GoalOrderByRelationAggregateInput
@@ -6151,6 +6186,7 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     password?: StringFilter<"User"> | string
+    img?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     Goal?: GoalListRelationFilter
@@ -6162,6 +6198,7 @@ export namespace Prisma {
     username?: SortOrder
     password?: SortOrder
     email?: SortOrder
+    img?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -6177,6 +6214,7 @@ export namespace Prisma {
     username?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
+    img?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -6189,6 +6227,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     bestStreak?: number
     streak?: number
+    description?: string
     color: string
     tag?: TagCreateNestedOneWithoutGoalInput
     user: UserCreateNestedOneWithoutGoalInput
@@ -6204,6 +6243,7 @@ export namespace Prisma {
     bestStreak?: number
     streak?: number
     userId: string
+    description?: string
     color: string
     tagId?: string | null
     goalLog?: goalLogUncheckedCreateNestedManyWithoutGoalInput
@@ -6217,6 +6257,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bestStreak?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
     tag?: TagUpdateOneWithoutGoalNestedInput
     user?: UserUpdateOneRequiredWithoutGoalNestedInput
@@ -6232,6 +6273,7 @@ export namespace Prisma {
     bestStreak?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
     tagId?: NullableStringFieldUpdateOperationsInput | string | null
     goalLog?: goalLogUncheckedUpdateManyWithoutGoalNestedInput
@@ -6246,6 +6288,7 @@ export namespace Prisma {
     bestStreak?: number
     streak?: number
     userId: string
+    description?: string
     color: string
     tagId?: string | null
   }
@@ -6258,6 +6301,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bestStreak?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
   }
 
@@ -6270,6 +6314,7 @@ export namespace Prisma {
     bestStreak?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
     tagId?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -6390,6 +6435,7 @@ export namespace Prisma {
     username: string
     password: string
     email: string
+    img?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     Goal?: GoalCreateNestedManyWithoutUserInput
@@ -6401,6 +6447,7 @@ export namespace Prisma {
     username: string
     password: string
     email: string
+    img?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     Goal?: GoalUncheckedCreateNestedManyWithoutUserInput
@@ -6412,6 +6459,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Goal?: GoalUpdateManyWithoutUserNestedInput
@@ -6423,6 +6471,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Goal?: GoalUncheckedUpdateManyWithoutUserNestedInput
@@ -6434,6 +6483,7 @@ export namespace Prisma {
     username: string
     password: string
     email: string
+    img?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6443,6 +6493,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6452,6 +6503,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6542,6 +6594,7 @@ export namespace Prisma {
     bestStreak?: SortOrder
     streak?: SortOrder
     userId?: SortOrder
+    description?: SortOrder
     color?: SortOrder
     tagId?: SortOrder
   }
@@ -6560,6 +6613,7 @@ export namespace Prisma {
     bestStreak?: SortOrder
     streak?: SortOrder
     userId?: SortOrder
+    description?: SortOrder
     color?: SortOrder
     tagId?: SortOrder
   }
@@ -6573,6 +6627,7 @@ export namespace Prisma {
     bestStreak?: SortOrder
     streak?: SortOrder
     userId?: SortOrder
+    description?: SortOrder
     color?: SortOrder
     tagId?: SortOrder
   }
@@ -6749,6 +6804,7 @@ export namespace Prisma {
     username?: SortOrder
     password?: SortOrder
     email?: SortOrder
+    img?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6758,6 +6814,7 @@ export namespace Prisma {
     username?: SortOrder
     password?: SortOrder
     email?: SortOrder
+    img?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6767,6 +6824,7 @@ export namespace Prisma {
     username?: SortOrder
     password?: SortOrder
     email?: SortOrder
+    img?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -7192,6 +7250,7 @@ export namespace Prisma {
     username: string
     password: string
     email: string
+    img?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     Tag?: TagCreateNestedManyWithoutUserInput
@@ -7202,6 +7261,7 @@ export namespace Prisma {
     username: string
     password: string
     email: string
+    img?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     Tag?: TagUncheckedCreateNestedManyWithoutUserInput
@@ -7278,6 +7338,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Tag?: TagUpdateManyWithoutUserNestedInput
@@ -7288,6 +7349,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Tag?: TagUncheckedUpdateManyWithoutUserNestedInput
@@ -7330,6 +7392,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     bestStreak?: number
     streak?: number
+    description?: string
     color: string
     tag?: TagCreateNestedOneWithoutGoalInput
     user: UserCreateNestedOneWithoutGoalInput
@@ -7344,6 +7407,7 @@ export namespace Prisma {
     bestStreak?: number
     streak?: number
     userId: string
+    description?: string
     color: string
     tagId?: string | null
   }
@@ -7372,6 +7436,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bestStreak?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
     tag?: TagUpdateOneWithoutGoalNestedInput
     user?: UserUpdateOneRequiredWithoutGoalNestedInput
@@ -7386,6 +7451,7 @@ export namespace Prisma {
     bestStreak?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
     tagId?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -7395,6 +7461,7 @@ export namespace Prisma {
     username: string
     password: string
     email: string
+    img?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     Goal?: GoalCreateNestedManyWithoutUserInput
@@ -7405,6 +7472,7 @@ export namespace Prisma {
     username: string
     password: string
     email: string
+    img?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     Goal?: GoalUncheckedCreateNestedManyWithoutUserInput
@@ -7423,6 +7491,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     bestStreak?: number
     streak?: number
+    description?: string
     color: string
     user: UserCreateNestedOneWithoutGoalInput
     goalLog?: goalLogCreateNestedManyWithoutGoalInput
@@ -7437,6 +7506,7 @@ export namespace Prisma {
     bestStreak?: number
     streak?: number
     userId: string
+    description?: string
     color: string
     goalLog?: goalLogUncheckedCreateNestedManyWithoutGoalInput
   }
@@ -7467,6 +7537,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Goal?: GoalUpdateManyWithoutUserNestedInput
@@ -7477,6 +7548,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Goal?: GoalUncheckedUpdateManyWithoutUserNestedInput
@@ -7510,6 +7582,7 @@ export namespace Prisma {
     bestStreak?: IntFilter<"Goal"> | number
     streak?: IntFilter<"Goal"> | number
     userId?: StringFilter<"Goal"> | string
+    description?: StringFilter<"Goal"> | string
     color?: StringFilter<"Goal"> | string
     tagId?: StringNullableFilter<"Goal"> | string | null
   }
@@ -7522,6 +7595,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     bestStreak?: number
     streak?: number
+    description?: string
     color: string
     tag?: TagCreateNestedOneWithoutGoalInput
     goalLog?: goalLogCreateNestedManyWithoutGoalInput
@@ -7535,6 +7609,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     bestStreak?: number
     streak?: number
+    description?: string
     color: string
     tagId?: string | null
     goalLog?: goalLogUncheckedCreateNestedManyWithoutGoalInput
@@ -7657,6 +7732,7 @@ export namespace Prisma {
     bestStreak?: number
     streak?: number
     userId: string
+    description?: string
     color: string
   }
 
@@ -7668,6 +7744,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bestStreak?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
     user?: UserUpdateOneRequiredWithoutGoalNestedInput
     goalLog?: goalLogUpdateManyWithoutGoalNestedInput
@@ -7682,6 +7759,7 @@ export namespace Prisma {
     bestStreak?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
     goalLog?: goalLogUncheckedUpdateManyWithoutGoalNestedInput
   }
@@ -7695,6 +7773,7 @@ export namespace Prisma {
     bestStreak?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
   }
 
@@ -7706,6 +7785,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     bestStreak?: number
     streak?: number
+    description?: string
     color: string
     tagId?: string | null
   }
@@ -7723,6 +7803,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bestStreak?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
     tag?: TagUpdateOneWithoutGoalNestedInput
     goalLog?: goalLogUpdateManyWithoutGoalNestedInput
@@ -7736,6 +7817,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bestStreak?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
     tagId?: NullableStringFieldUpdateOperationsInput | string | null
     goalLog?: goalLogUncheckedUpdateManyWithoutGoalNestedInput
@@ -7749,6 +7831,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bestStreak?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
     tagId?: NullableStringFieldUpdateOperationsInput | string | null
   }

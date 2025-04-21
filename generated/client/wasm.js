@@ -126,6 +126,7 @@ exports.Prisma.GoalScalarFieldEnum = {
   bestStreak: 'bestStreak',
   streak: 'streak',
   userId: 'userId',
+  description: 'description',
   color: 'color',
   tagId: 'tagId'
 };
@@ -151,6 +152,7 @@ exports.Prisma.UserScalarFieldEnum = {
   username: 'username',
   password: 'password',
   email: 'email',
+  img: 'img',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

@@ -2,6 +2,7 @@ import { HttpException, Injectable } from '@nestjs/common';
 import { CreateCompleteDto } from './dto/create-complete.dto';
 import { PrismaService } from 'src/prisma.service';
 import { startOfDay, endOfDay, subDays } from 'date-fns';
+import { DateTime } from 'luxon';
 
 @Injectable()
 export class CompleteService {
@@ -20,8 +21,9 @@ export class CompleteService {
       if (!goal) {
         throw new HttpException('Goal not found or unauthorized', 404);
       }
-
-      const today = new Date();
+      const today = DateTime.fromISO(new Date().toISOString())
+        .setZone('Asia/Bangkok')
+        .toISO();
       const todayStart = startOfDay(today);
       const todayEnd = endOfDay(today);
 
@@ -56,6 +58,8 @@ export class CompleteService {
               goalId: id,
               day: today,
               streak: yesterdayGoalLog.streak + 1,
+              createdAt: new Date(),
+              updatedAt: new Date(),
             },
           });
           await this.prisma.goal.update({
@@ -117,6 +121,7 @@ export class CompleteService {
 
       return { message: 'Goal status updated successfully.' };
     } catch (error) {
+      console.log(error);
       if (error instanceof HttpException) throw error;
       throw new HttpException('Internal Server Error', 500);
     }

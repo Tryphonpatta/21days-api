@@ -3,4 +3,5 @@ export class CreateGoalDto {
   note?: string;
   color: string;
   tag?: string;
+  description?: string;
 }

@@ -2,6 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { endOfDay, startOfDay } from 'date-fns';
+import { DateTime } from 'luxon';
 import { PrismaService } from 'src/prisma.service';
 
 @Injectable()
@@ -12,8 +13,11 @@ export class StreakService {
   @Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)
   async resetMissedStreaks() {
     this.logger.debug('Resetting missed streaks...');
-    const todayStart = startOfDay(new Date());
-    const todayEnd = endOfDay(new Date());
+    const today = DateTime.fromISO(new Date().toISOString())
+      .setZone('Asia/Bangkok')
+      .toISO();
+    const todayStart = startOfDay(today);
+    const todayEnd = endOfDay(today);
 
     const goals = await this.prisma.goal.findMany({
       include: {

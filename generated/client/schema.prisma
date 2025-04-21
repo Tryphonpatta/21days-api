@@ -1,23 +1,24 @@
 model Goal {
-  id         String    @id @default(cuid())
-  name       String
-  note       String
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
-  bestStreak Int       @default(0)
-  streak     Int       @default(0)
-  userId     String
-  color      String
-  tagId      String?
-  tag        Tag?      @relation(fields: [tagId], references: [id])
-  user       User      @relation(fields: [userId], references: [id])
-  goalLog    goalLog[]
+  id          String    @id @default(cuid())
+  name        String
+  note        String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  bestStreak  Int       @default(0)
+  streak      Int       @default(0)
+  userId      String
+  description String    @default("")
+  color       String
+  tagId       String?
+  tag         Tag?      @relation(fields: [tagId], references: [id])
+  user        User      @relation(fields: [userId], references: [id])
+  goalLog     goalLog[]
 }
 
 model goalLog {
   id        Int      @id @default(autoincrement())
   goalId    String
-  goal      Goal     @relation(fields: [goalId], references: [id])
+  goal      Goal     @relation(fields: [goalId], references: [id], onDelete: Cascade)
   streak    Int      @default(0)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -35,7 +36,7 @@ generator client {
   provider        = "prisma-client-js"
   output          = "../../generated/client"
   previewFeatures = ["prismaSchemaFolder"]
-  binaryTargets   = ["native", "linux-musl-openssl-3.0.x"]
+  binaryTargets   = ["native", "linux-musl-openssl-3.0.x", "debian-openssl-3.0.x"]
 }
 
 datasource db {
@@ -56,6 +57,7 @@ model User {
   username  String   @unique
   password  String
   email     String   @unique
+  img       String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   Goal      Goal[]
