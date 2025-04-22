@@ -1,11 +1,12 @@
 model User {
-  id        String   @id @default(uuid())
-  username  String   @unique
+  id        String      @id @default(uuid())
+  username  String      @unique
   password  String
-  email     String   @unique
+  email     String      @unique
   img       String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
   Goal      Goal[]
   Tag       Tag[]
+  UserBadge UserBadge[]
 }

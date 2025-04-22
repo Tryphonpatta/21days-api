@@ -87,4 +87,25 @@ export class UserService {
       return new HttpException(e.message, e.status);
     }
   }
+
+  async findProfile(userId: string) {
+    try {
+      const user = await this.prisma.user.findUnique({
+        where: {
+          id: userId,
+        },
+        include: {
+          Goal: {
+            include: {
+              goalLog: true,
+            },
+          },
+        },
+      });
+      return user;
+    } catch (e) {
+      console.log(e);
+      return new HttpException(e.message, e.status);
+    }
+  }
 }

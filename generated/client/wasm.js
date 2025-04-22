@@ -117,6 +117,13 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.BadgeScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  img: 'img'
+};
+
 exports.Prisma.GoalScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -157,6 +164,14 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.UserBadgeScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  badgeId: 'badgeId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -174,10 +189,12 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
+  Badge: 'Badge',
   Goal: 'Goal',
   goalLog: 'goalLog',
   Tag: 'Tag',
-  User: 'User'
+  User: 'User',
+  UserBadge: 'UserBadge'
 };
 
 /**

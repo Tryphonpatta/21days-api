@@ -1,3 +1,11 @@
+model Badge {
+  id          Int         @id @default(autoincrement())
+  name        String
+  description String
+  img         String
+  UserBadge   UserBadge[]
+}
+
 model Goal {
   id          String    @id @default(cuid())
   name        String
@@ -53,13 +61,24 @@ model Tag {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  username  String   @unique
+  id        String      @id @default(uuid())
+  username  String      @unique
   password  String
-  email     String   @unique
+  email     String      @unique
   img       String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
   Goal      Goal[]
   Tag       Tag[]
+  UserBadge UserBadge[]
+}
+
+model UserBadge {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  badgeId   Int
+  badge     Badge    @relation(fields: [badgeId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

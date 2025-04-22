@@ -1,0 +1,9 @@
+model UserBadge {
+    id        Int      @id @default(autoincrement())
+    userId    String
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    badgeId   Int
+    badge     Badge    @relation(fields: [badgeId], references: [id], onDelete: Cascade)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
