@@ -7150,7 +7150,6 @@ export namespace Prisma {
     userId: string | null
     badgeId: number | null
     createdAt: Date | null
-    updatedAt: Date | null
   }
 
   export type UserBadgeMaxAggregateOutputType = {
@@ -7158,7 +7157,6 @@ export namespace Prisma {
     userId: string | null
     badgeId: number | null
     createdAt: Date | null
-    updatedAt: Date | null
   }
 
   export type UserBadgeCountAggregateOutputType = {
@@ -7166,7 +7164,6 @@ export namespace Prisma {
     userId: number
     badgeId: number
     createdAt: number
-    updatedAt: number
     _all: number
   }
 
@@ -7186,7 +7183,6 @@ export namespace Prisma {
     userId?: true
     badgeId?: true
     createdAt?: true
-    updatedAt?: true
   }
 
   export type UserBadgeMaxAggregateInputType = {
@@ -7194,7 +7190,6 @@ export namespace Prisma {
     userId?: true
     badgeId?: true
     createdAt?: true
-    updatedAt?: true
   }
 
   export type UserBadgeCountAggregateInputType = {
@@ -7202,7 +7197,6 @@ export namespace Prisma {
     userId?: true
     badgeId?: true
     createdAt?: true
-    updatedAt?: true
     _all?: true
   }
 
@@ -7297,7 +7291,6 @@ export namespace Prisma {
     userId: string
     badgeId: number
     createdAt: Date
-    updatedAt: Date
     _count: UserBadgeCountAggregateOutputType | null
     _avg: UserBadgeAvgAggregateOutputType | null
     _sum: UserBadgeSumAggregateOutputType | null
@@ -7324,7 +7317,6 @@ export namespace Prisma {
     userId?: boolean
     badgeId?: boolean
     createdAt?: boolean
-    updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     badge?: boolean | BadgeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userBadge"]>
@@ -7334,7 +7326,6 @@ export namespace Prisma {
     userId?: boolean
     badgeId?: boolean
     createdAt?: boolean
-    updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     badge?: boolean | BadgeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userBadge"]>
@@ -7344,7 +7335,6 @@ export namespace Prisma {
     userId?: boolean
     badgeId?: boolean
     createdAt?: boolean
-    updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     badge?: boolean | BadgeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userBadge"]>
@@ -7354,10 +7344,9 @@ export namespace Prisma {
     userId?: boolean
     badgeId?: boolean
     createdAt?: boolean
-    updatedAt?: boolean
   }
 
-  export type UserBadgeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "badgeId" | "createdAt" | "updatedAt", ExtArgs["result"]["userBadge"]>
+  export type UserBadgeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "badgeId" | "createdAt", ExtArgs["result"]["userBadge"]>
   export type UserBadgeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     badge?: boolean | BadgeDefaultArgs<ExtArgs>
@@ -7382,7 +7371,6 @@ export namespace Prisma {
       userId: string
       badgeId: number
       createdAt: Date
-      updatedAt: Date
     }, ExtArgs["result"]["userBadge"]>
     composites: {}
   }
@@ -7812,7 +7800,6 @@ export namespace Prisma {
     readonly userId: FieldRef<"UserBadge", 'String'>
     readonly badgeId: FieldRef<"UserBadge", 'Int'>
     readonly createdAt: FieldRef<"UserBadge", 'DateTime'>
-    readonly updatedAt: FieldRef<"UserBadge", 'DateTime'>
   }
     
 
@@ -8307,8 +8294,7 @@ export namespace Prisma {
     id: 'id',
     userId: 'userId',
     badgeId: 'badgeId',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    createdAt: 'createdAt'
   };
 
   export type UserBadgeScalarFieldEnum = (typeof UserBadgeScalarFieldEnum)[keyof typeof UserBadgeScalarFieldEnum]
@@ -8748,7 +8734,6 @@ export namespace Prisma {
     userId?: StringFilter<"UserBadge"> | string
     badgeId?: IntFilter<"UserBadge"> | number
     createdAt?: DateTimeFilter<"UserBadge"> | Date | string
-    updatedAt?: DateTimeFilter<"UserBadge"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     badge?: XOR<BadgeScalarRelationFilter, BadgeWhereInput>
   }
@@ -8758,7 +8743,6 @@ export namespace Prisma {
     userId?: SortOrder
     badgeId?: SortOrder
     createdAt?: SortOrder
-    updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
     badge?: BadgeOrderByWithRelationInput
   }
@@ -8771,7 +8755,6 @@ export namespace Prisma {
     userId?: StringFilter<"UserBadge"> | string
     badgeId?: IntFilter<"UserBadge"> | number
     createdAt?: DateTimeFilter<"UserBadge"> | Date | string
-    updatedAt?: DateTimeFilter<"UserBadge"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     badge?: XOR<BadgeScalarRelationFilter, BadgeWhereInput>
   }, "id">
@@ -8781,7 +8764,6 @@ export namespace Prisma {
     userId?: SortOrder
     badgeId?: SortOrder
     createdAt?: SortOrder
-    updatedAt?: SortOrder
     _count?: UserBadgeCountOrderByAggregateInput
     _avg?: UserBadgeAvgOrderByAggregateInput
     _max?: UserBadgeMaxOrderByAggregateInput
@@ -8797,7 +8779,6 @@ export namespace Prisma {
     userId?: StringWithAggregatesFilter<"UserBadge"> | string
     badgeId?: IntWithAggregatesFilter<"UserBadge"> | number
     createdAt?: DateTimeWithAggregatesFilter<"UserBadge"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"UserBadge"> | Date | string
   }
 
   export type BadgeCreateInput = {
@@ -9145,7 +9126,6 @@ export namespace Prisma {
 
   export type UserBadgeCreateInput = {
     createdAt?: Date | string
-    updatedAt?: Date | string
     user: UserCreateNestedOneWithoutUserBadgeInput
     badge: BadgeCreateNestedOneWithoutUserBadgeInput
   }
@@ -9155,12 +9135,10 @@ export namespace Prisma {
     userId: string
     badgeId: number
     createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type UserBadgeUpdateInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutUserBadgeNestedInput
     badge?: BadgeUpdateOneRequiredWithoutUserBadgeNestedInput
   }
@@ -9170,7 +9148,6 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     badgeId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserBadgeCreateManyInput = {
@@ -9178,12 +9155,10 @@ export namespace Prisma {
     userId: string
     badgeId: number
     createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type UserBadgeUpdateManyMutationInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserBadgeUncheckedUpdateManyInput = {
@@ -9191,7 +9166,6 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     badgeId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -9564,7 +9538,6 @@ export namespace Prisma {
     userId?: SortOrder
     badgeId?: SortOrder
     createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type UserBadgeAvgOrderByAggregateInput = {
@@ -9577,7 +9550,6 @@ export namespace Prisma {
     userId?: SortOrder
     badgeId?: SortOrder
     createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type UserBadgeMinOrderByAggregateInput = {
@@ -9585,7 +9557,6 @@ export namespace Prisma {
     userId?: SortOrder
     badgeId?: SortOrder
     createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type UserBadgeSumOrderByAggregateInput = {
@@ -10106,7 +10077,6 @@ export namespace Prisma {
 
   export type UserBadgeCreateWithoutBadgeInput = {
     createdAt?: Date | string
-    updatedAt?: Date | string
     user: UserCreateNestedOneWithoutUserBadgeInput
   }
 
@@ -10114,7 +10084,6 @@ export namespace Prisma {
     id?: number
     userId: string
     createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type UserBadgeCreateOrConnectWithoutBadgeInput = {
@@ -10151,7 +10120,6 @@ export namespace Prisma {
     userId?: StringFilter<"UserBadge"> | string
     badgeId?: IntFilter<"UserBadge"> | number
     createdAt?: DateTimeFilter<"UserBadge"> | Date | string
-    updatedAt?: DateTimeFilter<"UserBadge"> | Date | string
   }
 
   export type TagCreateWithoutGoalInput = {
@@ -10583,7 +10551,6 @@ export namespace Prisma {
 
   export type UserBadgeCreateWithoutUserInput = {
     createdAt?: Date | string
-    updatedAt?: Date | string
     badge: BadgeCreateNestedOneWithoutUserBadgeInput
   }
 
@@ -10591,7 +10558,6 @@ export namespace Prisma {
     id?: number
     badgeId: number
     createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type UserBadgeCreateOrConnectWithoutUserInput = {
@@ -10771,12 +10737,10 @@ export namespace Prisma {
     id?: number
     userId: string
     createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type UserBadgeUpdateWithoutBadgeInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutUserBadgeNestedInput
   }
 
@@ -10784,14 +10748,12 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserBadgeUncheckedUpdateManyWithoutBadgeInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type goalLogCreateManyGoalInput = {
@@ -10905,7 +10867,6 @@ export namespace Prisma {
     id?: number
     badgeId: number
     createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type GoalUpdateWithoutUserInput = {
@@ -10968,7 +10929,6 @@ export namespace Prisma {
 
   export type UserBadgeUpdateWithoutUserInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     badge?: BadgeUpdateOneRequiredWithoutUserBadgeNestedInput
   }
 
@@ -10976,14 +10936,12 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     badgeId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserBadgeUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     badgeId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

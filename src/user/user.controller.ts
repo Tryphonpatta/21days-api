@@ -30,4 +30,10 @@ export class UserController {
     const user = req.user;
     return this.userService.findProfile(user.userId);
   }
+
+  @Get('badge')
+  findBadge(@Req() req) {
+    const user = req.user;
+    return this.userService.findBadge(user.userId);
+  }
 }

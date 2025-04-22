@@ -168,8 +168,7 @@ exports.Prisma.UserBadgeScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   badgeId: 'badgeId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SortOrder = {
