@@ -19,12 +19,6 @@ export class UserController {
     return this.userService.findStats(user.userId);
   }
 
-  @Get('leaderboard')
-  findLeaderBoard(@Req() req) {
-    const user = req.user;
-    return this.userService.findLeaderboard(user.userId);
-  }
-
   @Get('profile')
   findProfile(@Req() req) {
     const user = req.user;
