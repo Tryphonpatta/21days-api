@@ -82,6 +82,7 @@ export class CompleteService {
               streak: yesterdayGoalLog.streak + 1,
             },
           });
+          await this.checkBadge(yesterdayGoalLog.streak + 1, userId);
           return { ...goalLog, streak: yesterdayGoalLog.streak + 1 };
         }
         const goalLog = await this.prisma.goalLog.create({
