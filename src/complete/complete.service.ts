@@ -4,6 +4,20 @@ import { PrismaService } from 'src/prisma.service';
 import { startOfDay, endOfDay, subDays } from 'date-fns';
 import { DateTime } from 'luxon';
 
+const BadgeStreak = [
+  { streak: 7, name: '7-day-streak', id: 2 },
+  { streak: 15, name: '15-day-streak', id: 3 },
+  { streak: 30, name: '30-day-streak', id: 4 },
+  { streak: 60, name: '60-day-streak', id: 5 },
+  { streak: 100, name: '100-day-streak', id: 6 },
+  { streak: 300, name: '300-day-streak', id: 7 },
+];
+
+// const BadgeCheckIn = [
+//   { streak: 1000, name: '1k check-ins' },
+//   { streak: 3000, name: '3k check-ins' },
+// ];
+
 @Injectable()
 export class CompleteService {
   constructor(private readonly prisma: PrismaService) {}
@@ -124,6 +138,36 @@ export class CompleteService {
       console.log(error);
       if (error instanceof HttpException) throw error;
       throw new HttpException('Internal Server Error', 500);
+    }
+  }
+
+  async checkBadge(streak: number, userId: string) {
+    try {
+      const badges = await this.prisma.badge.findMany({
+        where: { UserBadge: { some: { userId } } },
+      });
+      if (streak < 7) return;
+      let i = 0;
+      for (const badge of BadgeStreak) {
+        if (streak <= badge.streak) {
+          break;
+        }
+        i++;
+      }
+      //check if the user already has the badge
+      const badgeExists = badges.find(
+        (badge) => badge.name === BadgeStreak[i].name,
+      );
+      if (badgeExists) return;
+      const badgeUser = await this.prisma.userBadge.create({
+        data: {
+          userId: userId,
+          badgeId: BadgeStreak[i].id,
+        },
+      });
+      return badgeUser;
+    } catch (error) {
+      console.log(error);
     }
   }
 }
